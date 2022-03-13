@@ -26,7 +26,7 @@ public class World{
 
     //cx, cy current player cords
     //Creates array with player seen map tiles
-    public playerVision(int cx, int cy){ 
+    public updatePlayerVision(int cx, int cy){ 
         for(int y = -R, y <= R, y++){
             for(int x = -R, y <= R, x++){
                 if validCordinate(cx + x, cy + y){
@@ -36,7 +36,6 @@ public class World{
                 }
             }
         }
-        return player_vision;
     }
 
 }
