@@ -1,61 +1,42 @@
 public class World{
     public int width;
     public int height;
-    public char[][] world_map;
-    public int vision = 1;
-    public int posx; //Needs to be in a seperate file
-    public int posy;
-    public int relPosx;
-    public int relPosy;
-
-    public World(int x, int y){
+    public char[][] world_map;      //2d array containing map info
+    public char[][] player_vision;  //2d array player visible map info
+    public int R;
+    
+    public World(int x, int y, int vision){
         width = x;
         height = y;
-        world = new char[height][width];
-        world_map = world;
+        R = vision;
+        world_map = new char[height][width];
+        player_vision = new char[R*2+1][R*2+1]
+    }
+    
+    private validCordinate(int x, int y){
+        //[TODO]optimize
+        if(y < 0 || y > (height - 1)){
+            return False;
+        }
+        if(x < 0 || x > (width - 1)){
+            return False;
+        }
+        return True;
     }
 
-    public char[][] createWorld(){}
-
-    public drawMap(){
-        char[] line;
-        line = new char[width];
-        for(int i = 0, i < height, i++){
-            for(int a = 0, a < width, a++) {
-                line[a] = world_map[i][a];
+    //cx, cy current player cords
+    //Creates array with player seen map tiles
+    public playerVision(int cx, int cy){ 
+        for(int y = -R, y <= R, y++){
+            for(int x = -R, y <= R, x++){
+                if validCordinate(cx + x, cy + y){
+                    player_vision[y][x] = world_map[cy + r][cx + x];
+                } else {
+                    player_vision[y][x] = -1;
+                }
             }
-            System.out.printl(line);
         }
-    }
-
-    public playerVision(int x, int y){
-        char[] line;
-        line = new char[vision * 2 + 1];
-        for(int i = -vision, i <= vision, i++){
-            for(int a = -vision, a < vision, a++) {
-                line[a] = world_map[y + i][x + a];
-            }
-            System.out.printl(line);
-        }
-    }
-
-    public drawSeen(){
-        int vision_state = 3;
-        
-        switch(vision_state) {
-            case 0:
-                playerVision(posx, posy);
-                break;
-            case 1:
-                playerVision(relPosx, posy);
-                break;
-            case 2:
-                playerVision(posx, relPosy);
-                break;
-            case 3:
-                playerVision(relPosx, relPosy);
-                break;
-        }
+        return player_vision;
     }
 
 }
