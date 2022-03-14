@@ -10,29 +10,30 @@ public class World{
         height = y;
         R = vision;
         world_map = new char[height][width];
-        player_vision = new char[R*2+1][R*2+1]
+        player_vision = new char[R*2+1][R*2+1];
     }
     
-    private void validCordinate(int x, int y){
+    private boolean validCoordinate(int x, int y){
         //[TODO]optimize
+        boolean valid = true;
         if(y < 0 || y > (height - 1)){
-            return False;
+            return !valid;
         }
         if(x < 0 || x > (width - 1)){
-            return False;
+            return !valid;
         }
-        return True;
+        return valid;
     }
 
     //cx, cy current player cords
     //Creates array with player seen map tiles
     public void updatePlayerVision(int cx, int cy){ 
-        for(int y = -R, y <= R, y++){
-            for(int x = -R, y <= R, x++){
-                if validCordinate(cx + x, cy + y){
-                    player_vision[y][x] = world_map[cy + r][cx + x];
+        for(int y = -R; y <= R; y++){
+            for(int x = -R; x <= R; x++){
+                if (validCoordinate(cx + x, cy + y)){
+                    player_vision[y][x] = world_map[cy + R][cx + x];
                 } else {
-                    player_vision[y][x] = -1;
+                    player_vision[y][x] = 1; // = -1; cannot put int in a char array
                 }
             }
         }
