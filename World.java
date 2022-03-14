@@ -13,7 +13,7 @@ public class World{
         player_vision = new char[R*2+1][R*2+1]
     }
     
-    private validCordinate(int x, int y){
+    private void validCordinate(int x, int y){
         //[TODO]optimize
         if(y < 0 || y > (height - 1)){
             return False;
@@ -26,7 +26,7 @@ public class World{
 
     //cx, cy current player cords
     //Creates array with player seen map tiles
-    public updatePlayerVision(int cx, int cy){ 
+    public void updatePlayerVision(int cx, int cy){ 
         for(int y = -R, y <= R, y++){
             for(int x = -R, y <= R, x++){
                 if validCordinate(cx + x, cy + y){
