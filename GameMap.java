@@ -9,11 +9,15 @@ public class GameMap {
             this.height = height;
         }
         
-        public void initMap() {
+        public void initMap(int x, int y) {
             map = new char[width][height];
             for(int cx = 0; cx < width; cx++){
                 for(int cy = 0; cy < height; cy++){
-                    map[cx][cy] = '-';
+                    if(cx == x && cy == y){
+                        map[cx][cy] = 'X';
+                    }else{
+                        map[cx][cy] = '-';
+                    }
                 }
             }
         }
