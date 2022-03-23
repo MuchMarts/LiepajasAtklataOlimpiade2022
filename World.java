@@ -1,11 +1,11 @@
 public class World {
     
-    map wMap;
+    GameMap wMap;
     
 
     public static void world(){
-        map wMap = new map(gameSettings.w, gameSettings.h);
-        player pMap = new player();
+        GameMap wMap = new GameMap(GameTuning.w, GameTuning.h);
+        PlayerOne pMap = new PlayerOne();
     }
 
     public char[][] getMap(){
