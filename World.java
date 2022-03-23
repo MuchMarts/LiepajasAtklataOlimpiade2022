@@ -1,4 +1,4 @@
-public class world {
+public class World {
     
     map wMap;
     
