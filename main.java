@@ -1,8 +1,8 @@
 public class main {
     public static void main(String[] args){
-        map m = new map(gameSettings.w, gameSettings.h);
+        GameMap m = new GameMap(GameTuning.w, GameTuning.h);
         m.initMap();
-        render.renderMap(m.map);
+        GameRender.renderMap(GameMap.map);
 }
     
 }
