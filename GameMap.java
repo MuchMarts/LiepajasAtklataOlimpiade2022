@@ -11,7 +11,6 @@ public class GameMap {
         
         public void initMap(int x, int y) {
             map = new char[width][height];
-            GameRender gr = new GameRender();
                 for(int cy = 0; cy < height; cy++){
                     for(int cx = 0; cx < width; cx++){
                     if(cx == x && cy == y){
