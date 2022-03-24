@@ -20,4 +20,8 @@ public class Translate {
         }
         return i;
     }
+
+    public char getLetter(int number){
+        return alphabet.get(number);
+    }
 }

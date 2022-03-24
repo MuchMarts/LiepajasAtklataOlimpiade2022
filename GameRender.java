@@ -2,6 +2,15 @@ import java.util.Scanner;
 
 public class GameRender { 
 
+    private static int x;
+    private static int y;
+
+    public static void koord(int vx, int vy){
+        //player's current coordinates
+        x = vx;
+        y = vy;
+    }
+
     public static void renderMap(char[][] map){
     //prints out the map along with letter and number identificators
         System.out.print("   ");
@@ -24,13 +33,13 @@ public class GameRender {
         }
     }
 
-    public static void gamePlay(){
+    public void gamePlay(){
         //TODO: add checkpoints and gameplay and such?
         MovingAround ma = new MovingAround();
         Scanner sc = new Scanner(System.in);
         int i = 0;
         while(i<4){
-            ma.scanning();
+            ma.scanning(x, y);
             renderMap(GameMap.map);
             i++;
         }
