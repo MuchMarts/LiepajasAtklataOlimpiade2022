@@ -4,20 +4,21 @@ public class GameRender {
 
     public static void renderMap(char[][] map){
     //prints out the map along with letter and number identificators
+        System.out.print("   ");
+        for(int i = 0; i < GameTuning.w; i++){
+            System.out.print((char)(i + 17 + '0') + " ");
+        }
+        System.out.println();
         for(int y = 0; y < GameTuning.h; y++){
-            if(y<10 && y!=0){
-                System.out.print(" " + y + " ");
-            }else if(y==0){
-                System.out.print("   ");
+            if(y<9){
+                System.out.print(" " + (y + 1) + " ");
+            //}else if(y==0){
+              //  System.out.print("   ");
             }else{
-                System.out.print(y + " ");
+                System.out.print((y + 1) + " ");
             }
             for(int x = 0; x < GameTuning.w; x++){
-                if(y==0){
-                    System.out.print((char)(x + 17 + '0') + " ");
-                }else{
-                    System.out.print(map[x][y] + " ");
-                }
+                System.out.print(map[x][y] + " ");
             }
             System.out.println();
         }
@@ -29,7 +30,8 @@ public class GameRender {
         Scanner sc = new Scanner(System.in);
         int i = 0;
         while(i<4){
-            renderMap(ma.moving());
+            ma.scanning();
+            renderMap(GameMap.map);
             i++;
         }
         sc.close();
