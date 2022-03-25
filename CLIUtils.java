@@ -29,4 +29,9 @@ public class CLIUtils{
             System.out.println(e);
         }
     }
+
+    public static void exitGame(){
+        System.out.println("Thank you for playing!");
+        System.exit(0);
+    }
 }

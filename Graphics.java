@@ -7,7 +7,7 @@ public class Graphics {
     // CODE to read graphics.json values on init replace clunky hardcoded values to just return
     }
     
-    public void renderGraphics(String[] graphic){
+    public static void renderGraphics(String[] graphic){
         for(String line : graphic){
             System.out.println(line);
         }
@@ -22,7 +22,7 @@ public class Graphics {
         return this.GameCreators;
     }
     */
-    public String[] banner(){
+    public static String[] banner(){
         String[] bannerASCII = {
             "  _      _                  _                       _ _ _ _       ___   ___ ___  ___  ",
             " | |    (_)                (_)                     | | (_(_)     |__ \\ / _ |__ \\|__ \\ ",
@@ -36,7 +36,7 @@ public class Graphics {
         return bannerASCII;
     }
 
-    public String[] gameCreators(){
+    public static String[] gameCreators(){
         String[] creatorsASCII = {
             "███    ███  █████  ███████ ██ ██    ██ ██     ███████  █████  ██   ██  █████  ███████      █████  ██████       ██ ",
             "████  ████ ██   ██ ██      ██ ██    ██ ██     ██      ██   ██ ██  ██  ██   ██ ██          ██   ██ ██   ██     ███ ",

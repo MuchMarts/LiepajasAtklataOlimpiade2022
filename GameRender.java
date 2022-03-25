@@ -41,6 +41,7 @@ public class GameRender {
         while(i<4){
             ma.scanning(x, y);
             CLIUtils.ClearConsole();
+            StartScreen.banner();
             renderMap(GameMap.map);
             i++;
         }
