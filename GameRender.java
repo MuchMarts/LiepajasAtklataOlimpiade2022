@@ -40,7 +40,7 @@ public class GameRender {
         int i = 0;
         while(i<4){
             ma.scanning(x, y);
-            ClearScreen.ClearConsole();
+            CLIUtils.ClearConsole();
             renderMap(GameMap.map);
             i++;
         }

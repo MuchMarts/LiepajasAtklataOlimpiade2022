@@ -1,5 +1,21 @@
-public class ClearScreen{
+public class CLIUtils{
     
+    //helper returns ms
+    public static int sec(int s){
+        return s * 1000;
+    }
+
+    //helper pauses programs for x time
+    public static void wait(int ms){
+        try{
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex){
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    //helper clears console
     public static void ClearConsole(){
         try{
             String operatingSystem = System.getProperty("os.name"); //Check the current operating system
