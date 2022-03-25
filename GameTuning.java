@@ -3,4 +3,5 @@ public class GameTuning {
     public static int h = 14;   // World height (y)
     public static int visionRad = 1;    // Player vision radius
     public static int pxy = 2 * visionRad + 1;
+    public static int stepCost = 5; // % of battery used to move 1 tile
 }
