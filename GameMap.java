@@ -11,7 +11,7 @@ public class GameMap {
         
         //TODO: Maybe store map data in a json or summ cuz how do we draw road where you can drive idfk.
 
-        public void initMap(int x, int y) {
+        public void initMap(int x, int y) { //TODO: Refactor code this name makes no sense
             map = new char[width][height];
                 for(int cy = 0; cy < height; cy++){
                     for(int cx = 0; cx < width; cx++){

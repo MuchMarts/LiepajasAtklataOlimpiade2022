@@ -10,6 +10,15 @@ public class GameRender {
         this.player = player;
     }
 
+    public void calculateSteps(int cx, int cy){
+        int steps = 0;
+        if(cx <= x){steps = steps + x - cx;} else {steps = steps + cx - x;};
+        if(cy <= y){steps = steps + y - cy;} else {steps = steps + cy - y;};
+
+        player.lastMoveStepCount = steps;
+    }
+
+    //This is ehh used in a funky way with moving around and initMap() 
     public static void koord(int vx, int vy){
         //player's current coordinates
         x = vx;
@@ -45,7 +54,7 @@ public class GameRender {
         int i = 0;
         while(i<4){
             ma.scanning(x, y);
-            player.useBattery(5); // TODO: Add a way to count how many tiles moved > also mov to moving around 
+            player.drive(lastMoveStepCount); // TODO: Add a way to count how many tiles moved > also mov to moving around 
             CLIUtils.ClearConsole();
             Graphics.banner();
             renderMap(GameMap.map);

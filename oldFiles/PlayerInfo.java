@@ -3,19 +3,27 @@ public class PlayerInfo {
     public String name;
     public String playedTime;
     public Boolean batteryDead;
+    public Integer basicKmDriven;
     public Double kilometers;
     public Integer battery;
+    public Integer lastMoveStepCount;
+
 
     public PlayerInfo(String name){
         this.name = name;
         this.battery = 100;
     }
 
+    public void drive(){
+        basicKmDriven = lastMoveStepCount * GameTuning.stepCost;
+        useBattery(lastMoveStepCount);
+    }
+
     public void chargeBattery(){
         this.battery = 100;
     }
     
-    public void useBattery(int steps){
+    private void useBattery(int steps){
         this.battery = this.battery - GameTuning.stepCost * steps;
     }
 

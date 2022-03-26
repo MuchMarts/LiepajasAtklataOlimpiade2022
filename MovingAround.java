@@ -15,6 +15,7 @@ public class MovingAround {
             int y = Integer.parseInt(input.substring(1));
             int x = tr.getInteger(input.substring(0,1).toUpperCase()); 
             if(x <= GameTuning.w && y <= GameTuning.h){
+                GameRender.calculateSteps(x, y);
                 gm.initMap(x, y - 1);
                 GameRender.koord(x, y);
             }else{
@@ -27,3 +28,6 @@ public class MovingAround {
         }
     }
 }
+
+
+//MASSIVE TODO: REFACTOR EVERYTHING
