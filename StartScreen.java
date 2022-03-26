@@ -20,11 +20,12 @@ public class StartScreen {
             int x = gameOptions();
             switch(x){
                 case 0: break;
-                case 1: isValid = false;
-                case 2: isValid = false;
-                case 3: isValid = false;
-                case 4: isValid = false;
-                case 5: isValid = false;
+                case 1: isValid = true;
+                case 2: isValid = true;
+                case 3: isValid = true;
+                case 4: isValid = true;
+                case 5: isValid = true;
+                default: break;
             }
             if(isValid){
                 return x;
