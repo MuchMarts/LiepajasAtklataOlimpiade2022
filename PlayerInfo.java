@@ -1,14 +1,22 @@
 public class PlayerInfo {
-<<<<<<< Updated upstream
-    
-=======
+
     public String name;
     public String playedTime;
     public Boolean batteryDead;
     public Double kilometers;
+    public Integer battery;
 
     public PlayerInfo(String name){
         this.name = name;
+        this.battery = 100;
+    }
+
+    public void chargeBattery(){
+        this.battery = 100;
+    }
+    
+    public void useBattery(int steps){
+        this.battery = this.battery - GameTuning.stepCost * steps;
     }
 
     public void kilometersDriven(int ox, int oy, int nx, int ny){
@@ -27,5 +35,4 @@ public class PlayerInfo {
             System.out.println("Tu esi nobraucis pa pieskari es nemaku aprekinat brr...");
         }
     }
->>>>>>> Stashed changes
 }
