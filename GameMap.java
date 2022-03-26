@@ -9,6 +9,8 @@ public class GameMap {
             this.height = height;
         }
         
+        //TODO: Maybe store map data in a json or summ cuz how do we draw road where you can drive idfk.
+
         public void initMap(int x, int y) {
             map = new char[width][height];
                 for(int cy = 0; cy < height; cy++){

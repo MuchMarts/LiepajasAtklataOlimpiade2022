@@ -22,7 +22,7 @@ public class Graphics {
         return this.GameCreators;
     }
     */
-    public static String[] banner(){
+    private static String[] setBanner(){
         String[] bannerASCII = {
             "  _      _                  _                       _ _ _ _       ___   ___ ___  ___  ",
             " | |    (_)                (_)                     | | (_(_)     |__ \\ / _ |__ \\|__ \\ ",
@@ -36,7 +36,7 @@ public class Graphics {
         return bannerASCII;
     }
 
-    public static String[] gameCreators(){
+    private static String[] setGameCreators(){
         String[] creatorsASCII = {
             "███    ███  █████  ███████ ██ ██    ██ ██     ███████  █████  ██   ██  █████  ███████      █████  ██████       ██ ",
             "████  ████ ██   ██ ██      ██ ██    ██ ██     ██      ██   ██ ██  ██  ██   ██ ██          ██   ██ ██   ██     ███ ",
@@ -45,5 +45,41 @@ public class Graphics {
             "██      ██ ██   ██ ███████ ██   ████   ██     ███████ ██   ██ ██   ██ ██   ██ ███████     ██   ██ ██   ██      ██ "
         };
         return creatorsASCII;
+    }
+
+    private static String resolveInt(int x){
+        String line = "000";
+        if(x == 100){
+            line = String.valueOf(x);
+        } else if ( x < 100 && x >= 10){
+            line = "0" + String.valueOf(x);
+        } else if (x < 10 && x >= 0){
+            line = "00" + String.valueOf(x);
+        } else {
+            System.out.println("Something broke lmao ripaks");
+        }
+        return ("  ###    "+line+"%    ### ");
+    }
+
+    private static String[] setEnergy(String xx){
+        String[] energyASCII = {
+            "\nBattery Charge",
+            "[=====================]",
+            xx,
+            "[=====================]\n"
+        };
+        return energyASCII;
+    }
+
+    public static void banner(){
+        renderGraphics(setBanner());
+    }
+
+    public static void gameCreators(){
+        renderGraphics(setGameCreators());
+    }
+
+    public static void energyBar(int x){
+        renderGraphics(setEnergy(resolveInt(x)));
     }
 }

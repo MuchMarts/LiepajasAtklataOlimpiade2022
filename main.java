@@ -3,12 +3,14 @@ public class main {
         
         CLIUtils.ClearConsole();
 
+        PlayerInfo player = new PlayerInfo("Banana Man1");
+
         StartScreen.IntroAnimation();
         int choice = StartScreen.validChoice();
         switch(choice){
             case -1: System.out.println("Error");
             case 1:
-                GameLoop.initGame(); 
+                GameLoop.initGame(player); 
                 break; //start game
             case 2: break; //leaderboard
             case 3: break; //edit tasks

@@ -4,19 +4,13 @@ public class StartScreen {
 
     public static void IntroAnimation(){
         System.out.println("\n\n\n");
-        Graphics.renderGraphics(Graphics.gameCreators());
+        Graphics.gameCreators();
         System.out.println("\n\n\n");
         CLIUtils.wait(CLIUtils.sec(4));
         CLIUtils.ClearConsole();
 
         System.out.println("\n\n");
-        Graphics.renderGraphics(Graphics.banner());
-        System.out.println("\n");
-    }
-
-    public static void banner(){
-        System.out.println("\n\n");
-        Graphics.renderGraphics(Graphics.banner());
+        Graphics.banner();
         System.out.println("\n");
     }
 
@@ -48,7 +42,7 @@ public class StartScreen {
 
         CLIUtils.ClearConsole();
 
-        banner();
+        Graphics.banner();
 
         System.out.println("[1] Start game");
         System.out.println("[2] Leaderboard");

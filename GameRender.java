@@ -4,6 +4,11 @@ public class GameRender {
 
     private static int x;
     private static int y;
+    private PlayerInfo player;
+
+    public GameRender(PlayerInfo player){
+        this.player = player;
+    }
 
     public static void koord(int vx, int vy){
         //player's current coordinates
@@ -40,9 +45,11 @@ public class GameRender {
         int i = 0;
         while(i<4){
             ma.scanning(x, y);
+            player.useBattery(5); // TODO: Add a way to count how many tiles moved > also mov to moving around 
             CLIUtils.ClearConsole();
-            StartScreen.banner();
+            Graphics.banner();
             renderMap(GameMap.map);
+            Graphics.energyBar(player.battery);
             i++;
         }
         sc.close();
