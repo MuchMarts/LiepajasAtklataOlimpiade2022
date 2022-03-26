@@ -7,7 +7,7 @@ public class main {
 
         StartScreen.IntroAnimation();
         int choice = StartScreen.validChoice();
-        switch(choice){
+        switch(choice){ //TODO: This needs to be recursive => move to Start screen or a game options class and make a method thats recursive
             case -1: System.out.println("Error");
             case 1:
                 GameLoop.initGame(player); 
