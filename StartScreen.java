@@ -15,18 +15,19 @@ public class StartScreen {
     }
 
     public static Integer validChoice(){
-        boolean isNotValid = true;
-        while(isNotValid){
+        boolean isValid = false;
+        while(!isValid){
             int x = gameOptions();
             switch(x){
                 case 0: break;
-                case 1: isNotValid = false;
-                case 2: isNotValid = false;
-                case 3: isNotValid = false;
-                case 4: isNotValid = false;
-                case 5: isNotValid = false;
+                case 1: isValid = true;
+                case 2: isValid = true;
+                case 3: isValid = true;
+                case 4: isValid = true;
+                case 5: isValid = true;
+                default: break;
             }
-            if(!isNotValid){
+            if(isValid){
                 return x;
             }
             CLIUtils.wait(50);
