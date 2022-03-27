@@ -7,7 +7,8 @@ public class main {
         CLIUtils.ClearConsole();
 
         //GameLoop
-
+        gr.IntroAnimation();
+        
         while(gameActive){
             int choice = StartScreen.validChoice(gr);
             switch(choice){

@@ -48,12 +48,13 @@ public class Graphics {
         System.out.println("\n\n\n");
         gameCreators();
         System.out.println("\n\n\n");
-        CLIUtils.wait(CLIUtils.sec(4));
+        CLIUtils.wait(CLIUtils.sec(3));
         CLIUtils.ClearConsole();
 
         System.out.println("\n\n");
         banner();
         System.out.println("\n");
+        CLIUtils.sec(1);
     }
 
     private void renderGraphics(String[] graphic){
