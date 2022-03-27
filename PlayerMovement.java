@@ -30,13 +30,14 @@ public class PlayerMovement {
             int x = translate.getInteger(input.substring(0,1).toUpperCase());
 
             if(!(x <= GameSettings.w && y <= GameSettings.h)){
-                System.out.println("Error: Out of bounds. Try again...");
+                System.out.println("Error: Out of bounds. Try again...\n");
                 getPlayerInput(lastx, lasty);
             }
             int[] cords = {x,y};
+            CLIUtils.ClearConsole();
             return cords;
         } catch(NumberFormatException e){
-            System.out.println("Incorrect answer format brrr");
+            System.out.println("Incorrect answer format brrr\n");
             getPlayerInput(lastx, lasty);
         }
         return null;
