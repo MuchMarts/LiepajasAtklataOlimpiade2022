@@ -43,13 +43,14 @@ public class GameRender {
         MovingAround ma = new MovingAround();
         Scanner sc = new Scanner(System.in);
         int i = 0;
+        Graphics g = new Graphics();
         while(i<4){
             ma.scanning(x, y);
             player.useBattery(5); // TODO: Add a way to count how many tiles moved > also mov to moving around 
             CLIUtils.ClearConsole();
-            Graphics.banner();
+            g.banner();
             renderMap(GameMap.map);
-            Graphics.energyBar(player.battery);
+            g.energyBar(player.battery);
             i++;
         }
         sc.close();

@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
 public class StartScreen {
-
+public static Graphics gr = new Graphics();
     public static void IntroAnimation(){
         System.out.println("\n\n\n");
-        Graphics.gameCreators();
+        gr.gameCreators();;
         System.out.println("\n\n\n");
         CLIUtils.wait(CLIUtils.sec(4));
         CLIUtils.ClearConsole();
 
         System.out.println("\n\n");
-        Graphics.banner();
+        gr.banner();
         System.out.println("\n");
     }
 
@@ -43,7 +43,7 @@ public class StartScreen {
 
         CLIUtils.ClearConsole();
 
-        Graphics.banner();
+        gr.banner();
 
         System.out.println("[1] Start game");
         System.out.println("[2] Leaderboard");
