@@ -14,6 +14,8 @@ public class PlayerMovement {
         this.gr = gr;
     }
 
+    //TODO: Bug where cordinates are wwrong lmao a1 = a2 and so on
+
     public int[] getPlayerInput(int lastx, int lasty){
         
         Scanner scan = new Scanner(System.in);

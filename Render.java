@@ -1,6 +1,6 @@
 public class Render {
 
-    public static void drawMap(char[][] playerLocation, WorldMap map, Graphics gr){
+    public static void drawMap(char[][] playerLocation, WorldMap map, Graphics gr, int battery){
         
         gr.banner();
 
@@ -24,6 +24,8 @@ public class Render {
             }
             System.out.println();
         }
+        
+        gr.energyBar(battery);
         
     }
 

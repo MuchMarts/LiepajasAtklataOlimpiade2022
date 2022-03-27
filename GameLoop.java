@@ -30,7 +30,7 @@ public class GameLoop {
         //TODO: Fix no map on start
         //TODO: ADD ENERGY BAR
         while(i<4){
-            Render.drawMap(player.playerMove(), gameMap, gr);
+            Render.drawMap(player.playerMove(), gameMap, gr, player.batteryCharge);
             i++;
         }
 
