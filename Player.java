@@ -7,13 +7,13 @@ public class Player {
     public Integer lastx;
     public Integer lasty;
 
-    public Player(String name, int start_x, int start_y){
+    public Player(String name, int start_x, int start_y, Graphics gr){
         this.name = name;
         this.batteryCharge = 100;
         this.distanceTraveled = 0;
         this.lastx = start_x;
         this.lasty = start_y;
-        this.movement = new PlayerMovement();
+        this.movement = new PlayerMovement(gr);
     }
 
     public void chargeBattery(){
@@ -34,10 +34,11 @@ public class Player {
 
     public char[][] playerMove(){
         int[] playerCordinates = movement.getPlayerInput(lastx, lasty);
-        char[][] playerLocation = movement.movePlayer(playerCordinates);
-
+        
         int x = playerCordinates[0];
         int y = playerCordinates[1];
+        
+        char[][] playerLocation = movement.movePlayer(playerCordinates);
 
         int distance = GameHelper.calculateDistanceTraveled(lastx, lasty, x, y);
         updateDistanceTraveled(distance);

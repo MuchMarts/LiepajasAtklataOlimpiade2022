@@ -4,14 +4,22 @@ public class PlayerMovement {
     
     Translate translate = new Translate();
     public char[][] playerLocation;
-    public PlayerMovement(){
-    playerLocation = new char[GameSettings.w][GameSettings.h];
+    public Graphics gr;
+    public boolean firstMove = true;
+    private int[] lastXY;
+
+
+    public PlayerMovement(Graphics gr){
+        playerLocation = new char[GameSettings.w][GameSettings.h];
+        this.gr = gr;
     }
 
     public int[] getPlayerInput(int lastx, int lasty){
         
         Scanner scan = new Scanner(System.in);
         
+        //TODO: on start print out map
+
         System.out.println("Tu tagad atrodies: " + translate.getLetter(lastx) + lasty);
         System.out.print("Ievadi koordinaatu, kur veelies doties: ");
         
@@ -37,8 +45,20 @@ public class PlayerMovement {
     public char[][] movePlayer(int[] playerCordinates){        
         if(playerCordinates == null){ System.out.println("Error calculating  current coordinates");return null;}
         
-        playerLocation[playerCordinates[0]][playerCordinates[1]] = 'X';
-        
+        int x = playerCordinates[0];
+        int y = playerCordinates[1];
+
+        if(this.firstMove){
+            playerLocation[x][y] = 'X';
+            this.lastXY = playerCordinates;
+            this.firstMove = false;
+            return playerLocation;    
+        }
+
+        playerLocation[x][y] = 'X';
+        playerLocation[this.lastXY[0]][this.lastXY[1]] = ' ';
+        this.lastXY =  playerCordinates;
+
         return playerLocation;
     }
 

@@ -1,7 +1,8 @@
 public class Render {
-    public static void drawMap(char[][] playerLocation, WorldMap map){
+
+    public static void drawMap(char[][] playerLocation, WorldMap map, Graphics gr){
         
-        Graphics.banner();
+        gr.banner();
 
         char[][] currMap = getCurrMapState(playerLocation, map);
 
@@ -34,7 +35,7 @@ public class Render {
                 if(playerLocation[x][y] == 'X'){
                     currentMapState[x][y] = 'X';
                 } else {
-                    currentMapState[x][y] = map.map[x][y];
+                    currentMapState[x][y] = map.gameMap[x][y];
                 }
                 
             }
