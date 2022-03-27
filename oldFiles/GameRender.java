@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+import oldFiles.PlayerInfo;
+
 public class GameRender { 
 
     private static int x;
@@ -28,11 +30,11 @@ public class GameRender {
     public static void renderMap(char[][] map){
     //prints out the map along with letter and number identificators
         System.out.print("   ");
-        for(int i = 0; i < GameTuning.w; i++){
+        for(int i = 0; i < GameSettings.w; i++){
             System.out.print((char)(i + 17 + '0') + " ");
         }
         System.out.println();
-        for(int y = 0; y < GameTuning.h; y++){
+        for(int y = 0; y < GameSettings.h; y++){
             if(y<9){
                 System.out.print(" " + (y + 1) + " ");
             //}else if(y==0){
@@ -40,7 +42,7 @@ public class GameRender {
             }else{
                 System.out.print((y + 1) + " ");
             }
-            for(int x = 0; x < GameTuning.w; x++){
+            for(int x = 0; x < GameSettings.w; x++){
                 System.out.print(map[x][y] + " ");
             }
             System.out.println();
@@ -54,7 +56,7 @@ public class GameRender {
         int i = 0;
         while(i<4){
             ma.scanning(x, y);
-            player.drive(lastMoveStepCount); // TODO: Add a way to count how many tiles moved > also mov to moving around 
+            player.drive(); // TODO: Add a way to count how many tiles moved > also mov to moving around 
             CLIUtils.ClearConsole();
             Graphics.banner();
             renderMap(GameMap.map);

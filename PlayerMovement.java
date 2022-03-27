@@ -8,8 +8,12 @@ public class PlayerMovement {
     playerLocation = new char[GameSettings.w][GameSettings.h];
     }
 
-    public int[] getPlayerInput(){
+    public int[] getPlayerInput(int lastx, int lasty){
+        
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("Tu tagad atrodies: " + translate.getLetter(lastx) + lasty);
+        System.out.print("Ievadi koordinaatu, kur veelies doties: ");
 
         String input = scan.nextLine();
         
@@ -19,22 +23,23 @@ public class PlayerMovement {
 
             if(!(x <= GameSettings.w && y <= GameSettings.h)){
                 System.out.println("Error: Out of bounds. Try again...");
-                getPlayerInput();
+                getPlayerInput(lastx, lasty);
             }
             int[] cords = {x,y};
             return cords;
         } catch(NumberFormatException e){
             System.out.println("Incorrect answer format brrr");
-            getPlayerInput();
+            getPlayerInput(lastx, lasty);
         }
         return null;
     }
 
-    public void movePlayer(int[] cords, WorldMap map){
-        if(cords == null){ System.out.println("Error calculating  current coordinates");return;}
+    public char[][] movePlayer(int[] playerCordinates){        
+        if(playerCordinates == null){ System.out.println("Error calculating  current coordinates");return null;}
         
-        Render.drawMap(cords, map);
-    
+        playerLocation[playerCordinates[0]][playerCordinates[1]] = 'X';
+        
+        return playerLocation;
     }
 
 }

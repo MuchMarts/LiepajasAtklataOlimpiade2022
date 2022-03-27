@@ -1,3 +1,6 @@
+import GameSettings;
+
+package oldFiles;
 public class PlayerOne {
     char[][] playerVision;
     public void player(){

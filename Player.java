@@ -2,20 +2,18 @@ public class Player {
     public String name;
     public Integer batteryCharge;
     private Integer distanceTraveled;
-    private Map GameMap;
     private PlayerMovement movement;
     
     public Integer lastx;
     public Integer lasty;
 
-    public Player(String name, int start_x, int start_y, Map map){
+    public Player(String name, int start_x, int start_y){
         this.name = name;
         this.batteryCharge = 100;
         this.distanceTraveled = 0;
         this.lastx = start_x;
         this.lasty = start_y;
-        this.GameMap = map;
-        this.movement = new PlayerMovement(map);
+        this.movement = new PlayerMovement();
     }
 
     public void chargeBattery(){
@@ -34,12 +32,12 @@ public class Player {
         this.distanceTraveled = this.distanceTraveled + distance;
     }
 
-    public void drive(){
-        int[] playerMove = movement.getPlayerInput();
-        int x = playerMove[0];
-        int y = playerMove[1];
-        
-        movement.movePlayer(playerMove, GameMap);
+    public char[][] playerMove(){
+        int[] playerCordinates = movement.getPlayerInput(lastx, lasty);
+        char[][] playerLocation = movement.movePlayer(playerCordinates);
+
+        int x = playerCordinates[0];
+        int y = playerCordinates[1];
 
         int distance = GameHelper.calculateDistanceTraveled(lastx, lasty, x, y);
         updateDistanceTraveled(distance);
@@ -47,6 +45,8 @@ public class Player {
 
         this.lastx = x;
         this.lasty = y;
+
+        return playerLocation;
     }
 
 }
