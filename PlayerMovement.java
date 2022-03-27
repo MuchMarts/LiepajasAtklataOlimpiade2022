@@ -11,10 +11,10 @@ public class PlayerMovement {
     public int[] getPlayerInput(int lastx, int lasty){
         
         Scanner scan = new Scanner(System.in);
-
+        
         System.out.println("Tu tagad atrodies: " + translate.getLetter(lastx) + lasty);
         System.out.print("Ievadi koordinaatu, kur veelies doties: ");
-
+        
         String input = scan.nextLine();
         
         try{

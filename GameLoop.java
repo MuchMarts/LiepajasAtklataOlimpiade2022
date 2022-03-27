@@ -1,8 +1,5 @@
-import java.util.Map;
-
-import oldFiles.PlayerInfo;
-
 public class GameLoop {
+    /*
     public static void initGame(PlayerInfo player){
         CLIUtils.ClearConsole();
         GameMap m = new GameMap(GameSettings.w, GameSettings.h);
@@ -13,6 +10,7 @@ public class GameLoop {
         Graphics.energyBar(player.battery);
         gr.gamePlay();
     }
+    */
 
     public int startGame(){
         CLIUtils.ClearConsole();
@@ -26,8 +24,10 @@ public class GameLoop {
 
         int i = 0;
 
+        //TODO: ADD INTTRO ANIMATION
+        //TODO: Fix no map on start
+        //TODO: ADD ENERGY BAR
         while(i<4){
-            Graphics.banner();
             Render.drawMap(player.playerMove(), gameMap);
             i++;
         }

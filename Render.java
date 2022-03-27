@@ -1,5 +1,8 @@
 public class Render {
     public static void drawMap(char[][] playerLocation, WorldMap map){
+        
+        Graphics.banner();
+
         char[][] currMap = getCurrMapState(playerLocation, map);
 
         System.out.print("   ");
