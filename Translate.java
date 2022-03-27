@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
 
+//Maybe move into GameHelper
+
 public class Translate {
 
     private Map<Integer, Character> alphabet;

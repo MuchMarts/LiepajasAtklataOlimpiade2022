@@ -1,23 +1,11 @@
 import java.util.Scanner;
 
 public class StartScreen {
-public static Graphics gr = new Graphics();
-    public static void IntroAnimation(){
-        System.out.println("\n\n\n");
-        gr.gameCreators();;
-        System.out.println("\n\n\n");
-        CLIUtils.wait(CLIUtils.sec(4));
-        CLIUtils.ClearConsole();
 
-        System.out.println("\n\n");
-        gr.banner();
-        System.out.println("\n");
-    }
-
-    public static Integer validChoice(){
+    public static Integer validChoice(Graphics gr){
         boolean isValid = false;
         while(!isValid){
-            int x = gameOptions();
+            int x = gameOptions(gr);
             switch(x){
                 case 0: break;
                 case 1: isValid = true;
@@ -35,7 +23,7 @@ public static Graphics gr = new Graphics();
         return -1;
     }
 
-    public static Integer gameOptions(){
+    public static Integer gameOptions(Graphics gr){
         Scanner sc = new Scanner(System.in);
 
         int state = 0; // determines game state

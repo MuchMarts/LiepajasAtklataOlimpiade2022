@@ -1,17 +1,19 @@
+/*
 import java.io.FileReader;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+*/
 
 public class Graphics {
     
-    static String[] Banner;
-    static String[] GameCreators;
+    String[] Banner;
+    String[] GameCreators;
 
     public Graphics(){
-    //reads JSON file with graphics and returns values as JSONArrays
+        /*
         JSONParser jsonParser = new JSONParser();
         try {
             FileReader reader = new FileReader("Graphics.json");
@@ -25,7 +27,7 @@ public class Graphics {
             for(int i = 0; i < banner_arr.length; i++){
                 banner_str[i] = banner_arr[i].toString();
             }
-            Graphics.Banner = banner_str;
+            this.Banner = banner_str;
 
             JSONArray creators = (JSONArray) jsonObject.get("creators");
             Object[] creators_arr = creators.toArray();
@@ -33,20 +35,58 @@ public class Graphics {
             for(int i = 0; i < creators_arr.length; i++){
                 creators_str[i] = creators_arr[i].toString();
             }
-            Graphics.GameCreators = creators_str;
+            this.GameCreators = creators_str;
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("something went poopy");
         }
+        */
+        
     }
     
-    public void renderGraphics(String[] graphic){
+    public void IntroAnimation(){
+        System.out.println("\n\n\n");
+        gameCreators();
+        System.out.println("\n\n\n");
+        CLIUtils.wait(CLIUtils.sec(4));
+        CLIUtils.ClearConsole();
+
+        System.out.println("\n\n");
+        banner();
+        System.out.println("\n");
+    }
+
+    private void renderGraphics(String[] graphic){
         for(String line : graphic){
             System.out.println(line);
         }
     }
+    private String[] setBanner(){
+        String[] bannerASCII = {
+            "  _      _                  _                       _ _ _ _       ___   ___ ___  ___  ",
+            " | |    (_)                (_)                     | | (_(_)     |__ \\ / _ |__ \\|__ \\ ",
+            " | |     _  ___ _ __   __ _ _  __ _ ___   _ __ __ _| | |_ _ ___     ) | | | | ) |  ) |",
+            " | |    | |/ _ | '_ \\ / _` | |/ _` / __| | '__/ _` | | | | / __|   / /| | | |/ /  / / ",
+            " | |____| |  __| |_) | (_| | | (_| \\__ \\ | | | (_| | | | | \\__ \\  / /_| |_| / /_ / /_ ",
+            " |______|_|\\___| .__/ \\__,_| |\\__,_|___/ |_|  \\__,_|_|_|_| |___/ |____|\\___|____|____|",
+            "               | |        _/ |                          _/ |                          ",
+            "               |_|       |__/                          |__/                           "
+        };
+        return bannerASCII;
+    }
 
-    private static String resolveInt(int x){
+    private String[] setGameCreators(){
+        String[] creatorsASCII = {
+            "███    ███  █████  ███████ ██ ██    ██ ██     ███████  █████  ██   ██  █████  ███████      █████  ██████       ██ ",
+            "████  ████ ██   ██ ██      ██ ██    ██ ██     ██      ██   ██ ██  ██  ██   ██ ██          ██   ██ ██   ██     ███ ",
+            "██ ████ ██ ███████ ███████ ██ ██    ██ ██     ███████ ███████ █████   ███████ ███████     ███████ ██████       ██ ",
+            "██  ██  ██ ██   ██      ██ ██  ██  ██  ██          ██ ██   ██ ██  ██  ██   ██      ██     ██   ██ ██   ██      ██ ",
+            "██      ██ ██   ██ ███████ ██   ████   ██     ███████ ██   ██ ██   ██ ██   ██ ███████     ██   ██ ██   ██      ██ "
+        };
+        return creatorsASCII;
+    }
+
+    private String resolveInt(int x){
         String line = "000";
         if(x == 100){
             line = String.valueOf(x);
@@ -60,7 +100,7 @@ public class Graphics {
         return ("  ###    "+line+"%    ### ");
     }
 
-    private static String[] setEnergy(String xx){
+    private String[] setEnergy(String xx){
         String[] energyASCII = {
             "\nBattery Charge",
             "[=====================]",
@@ -71,11 +111,13 @@ public class Graphics {
     }
 
     public void banner(){
-        renderGraphics(Banner);
+        renderGraphics(setBanner());
+        //renderGraphics(this.Banner);
     }
 
     public void gameCreators(){
-        renderGraphics(GameCreators);
+        renderGraphics(setGameCreators());
+        //renderGraphics(this.GameCreators);
     }
 
     public void energyBar(int x){
