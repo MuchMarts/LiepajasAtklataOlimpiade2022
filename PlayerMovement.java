@@ -18,8 +18,6 @@ public class PlayerMovement {
         this.map = map;
     }
 
-    //TODO: Bug where cordinates are wwrong lmao a1 = a2 and so on
-
     public int[] getPlayerInput(int lastx, int lasty){
         
         Scanner scan = new Scanner(System.in);
@@ -29,11 +27,11 @@ public class PlayerMovement {
             Render.drawMap(tempInitMap(lastx, lasty), this.map, gr, 999); 
         }
 
-        System.out.println("Tu tagad atrodies: " + translate.getLetter(lastx) + (lasty));
-        System.out.print("Ievadi koordinaatu, kur veelies doties: ");
+        System.out.println("You are now at: " + translate.getLetter(lastx) + (lasty + 1));
+        System.out.print("Input the coordinate of your desired destination: ");
         
         String input = scan.nextLine();
-        
+        int[] cords = new int[2];
         try{
             int y = Integer.parseInt(input.substring(1));
             int x = translate.getInteger(input.substring(0,1).toUpperCase());
@@ -42,18 +40,19 @@ public class PlayerMovement {
                 System.out.println("Error: Out of bounds. Try again...\n");
                 getPlayerInput(lastx, lasty);
             }
-            int[] cords = {x,y};
+            cords[0] = x; cords[1] = y - 1;
             CLIUtils.ClearConsole();
             return cords;
         } catch(NumberFormatException e){
-            System.out.println("Incorrect answer format brrr\n");
+            System.out.println("Incorrect answer format brrr...\n");
             getPlayerInput(lastx, lasty);
         }
-        return null;
+        //TODO: fix bug with NumberFormatException
+        return cords;
     }
 
     public char[][] movePlayer(int[] playerCordinates){        
-        if(playerCordinates == null){ System.out.println("Error calculating  current coordinates");return null;}
+        if(playerCordinates == null){ System.out.println("Error calculating current coordinates");return null;}
         
         int x = playerCordinates[0];
         int y = playerCordinates[1];
