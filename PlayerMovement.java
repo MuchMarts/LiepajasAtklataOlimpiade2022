@@ -31,7 +31,7 @@ public class PlayerMovement {
         System.out.print("Input the coordinate of your desired destination: ");
         
         String input = scan.nextLine();
-        
+        int[] cords = new int[2];
         try{
             int y = Integer.parseInt(input.substring(1));
             int x = translate.getInteger(input.substring(0,1).toUpperCase());
@@ -40,14 +40,14 @@ public class PlayerMovement {
                 System.out.println("Error: Out of bounds. Try again...\n");
                 getPlayerInput(lastx, lasty);
             }
-            int[] cords = {x, y - 1};
+            cords[0] = x; cords[1] = y - 1;
             CLIUtils.ClearConsole();
             return cords;
         } catch(NumberFormatException e){
             System.out.println("Incorrect answer format brrr...\n");
             getPlayerInput(lastx, lasty);
         }
-        return null;
+        return cords;
     }
 
     public char[][] movePlayer(int[] playerCordinates){        
