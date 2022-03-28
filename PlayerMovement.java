@@ -32,6 +32,7 @@ public class PlayerMovement {
         
         String input = scan.nextLine();
         int[] cords = new int[2];
+
         try{
             int y = Integer.parseInt(input.substring(1));
             int x = translate.getInteger(input.substring(0,1).toUpperCase());
@@ -45,10 +46,9 @@ public class PlayerMovement {
             return cords;
         } catch(NumberFormatException e){
             System.out.println("Incorrect answer format brrr...\n");
-            getPlayerInput(lastx, lasty);
+            return null;
         }
         //TODO: fix bug with NumberFormatException
-        return cords;
     }
 
     public char[][] movePlayer(int[] playerCordinates){        

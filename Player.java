@@ -35,8 +35,15 @@ public class Player {
     }
 
     public char[][] playerMove(){
-        int[] playerCordinates = movement.getPlayerInput(lastx, lasty);
-        
+        int[] playerCordinates;
+        while(true){
+            playerCordinates = movement.getPlayerInput(lastx, lasty);
+            if(playerCordinates != null){
+                if(playerCordinates[0] <= GameSettings.w){
+                    break;}
+            }
+        }
+
         int x = playerCordinates[0];
         int y = playerCordinates[1];
         
