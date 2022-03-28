@@ -14,15 +14,13 @@ public class PlayerMovement {
         this.gr = gr;
     }
 
-    //TODO: Bug where cordinates are wwrong lmao a1 = a2 and so on
-
     public int[] getPlayerInput(int lastx, int lasty){
         
         Scanner scan = new Scanner(System.in);
         
         //TODO: on start print out map
 
-        System.out.println("You are now at: " + translate.getLetter(lastx) + lasty);
+        System.out.println("You are now at: " + translate.getLetter(lastx) + (lasty + 1));
         System.out.print("Input the coordinate of your desired destination: ");
         
         String input = scan.nextLine();
@@ -35,7 +33,7 @@ public class PlayerMovement {
                 System.out.println("Error: Out of bounds. Try again...\n");
                 getPlayerInput(lastx, lasty);
             }
-            int[] cords = {x, y};
+            int[] cords = {x, y - 1};
             CLIUtils.ClearConsole();
             return cords;
         } catch(NumberFormatException e){

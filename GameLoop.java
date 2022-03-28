@@ -25,7 +25,7 @@ public class GameLoop {
         Player player = new Player(start_x, start_y, gr);
 
         int i = 0;
-
+        
         //TODO: ADD INTTRO ANIMATION
         //TODO: Fix no map on start
         //TODO: ADD ENERGY BAR
