@@ -22,8 +22,8 @@ public class PlayerMovement {
         
         //TODO: on start print out map
 
-        System.out.println("Tu tagad atrodies: " + translate.getLetter(lastx) + lasty);
-        System.out.print("Ievadi koordinaatu, kur veelies doties: ");
+        System.out.println("You are now at: " + translate.getLetter(lastx) + lasty);
+        System.out.print("Input the coordinate of your desired destination: ");
         
         String input = scan.nextLine();
         
@@ -35,18 +35,18 @@ public class PlayerMovement {
                 System.out.println("Error: Out of bounds. Try again...\n");
                 getPlayerInput(lastx, lasty);
             }
-            int[] cords = {x,y};
+            int[] cords = {x, y};
             CLIUtils.ClearConsole();
             return cords;
         } catch(NumberFormatException e){
-            System.out.println("Incorrect answer format brrr\n");
+            System.out.println("Incorrect answer format brrr...\n");
             getPlayerInput(lastx, lasty);
         }
         return null;
     }
 
     public char[][] movePlayer(int[] playerCordinates){        
-        if(playerCordinates == null){ System.out.println("Error calculating  current coordinates");return null;}
+        if(playerCordinates == null){ System.out.println("Error calculating current coordinates");return null;}
         
         int x = playerCordinates[0];
         int y = playerCordinates[1];

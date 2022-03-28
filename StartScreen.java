@@ -39,7 +39,7 @@ public class StartScreen {
         System.out.println("[4] Map editor");
         System.out.println("[5] Exit");      
 
-        System.out.println("\nIzvēlaties opciju: ");
+        System.out.println("\nChoose an option: ");
         
         if(sc.hasNextInt()){
             int x = sc.nextInt();
