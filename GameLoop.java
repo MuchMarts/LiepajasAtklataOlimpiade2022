@@ -1,17 +1,4 @@
 public class GameLoop {
-    /*
-    public static void initGame(PlayerInfo player){
-        CLIUtils.ClearConsole();
-        GameMap m = new GameMap(GameSettings.w, GameSettings.h);
-        GameRender gr = new GameRender(player);
-        Graphics g = new Graphics();
-        m.initMap(0,0);
-        g.banner();
-        GameRender.renderMap(GameMap.map);
-        g.energyBar(player.battery);
-        gr.gamePlay();
-    }
-    */
 
     public int startGame(Graphics graphics){
         CLIUtils.ClearConsole();
@@ -21,17 +8,10 @@ public class GameLoop {
 
         Graphics gr = graphics;
         WorldMap gameMap = new WorldMap(GameSettings.w, GameSettings.h);
-        String name = "test"; //TODO: player input name
-        Player player = new Player(start_x, start_y, gr);
+        Player player = new Player(start_x, start_y, gr, gameMap);
 
-        int i = 0;
-        
-        //TODO: ADD INTTRO ANIMATION
-        //TODO: Fix no map on start
-        //TODO: ADD ENERGY BAR
-        while(i<4){
+        while(player.batteryCharge > 0){
             Render.drawMap(player.playerMove(), gameMap, gr, player.batteryCharge);
-            i++;
         }
 
         return 1;

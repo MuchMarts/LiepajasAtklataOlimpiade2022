@@ -12,7 +12,7 @@ public class Render {
         }
         System.out.println();
         for(int y = 0; y < GameSettings.h; y++){
-            if(y<9){
+            if(y<GameSettings.h-1){
                 System.out.print(" " + (y + 1) + " ");
             }else{
                 System.out.print((y + 1) + " ");
@@ -23,8 +23,8 @@ public class Render {
             System.out.println();
         }
         
+        if(battery == 999){return;}
         gr.energyBar(battery);
-        
     }
 
     private static char[][] getCurrMapState(char[][] playerLocation, WorldMap map){

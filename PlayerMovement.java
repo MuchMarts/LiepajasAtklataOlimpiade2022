@@ -4,14 +4,18 @@ public class PlayerMovement {
     
     Translate translate = new Translate();
     public char[][] playerLocation;
+    private char[][] tempPlayerLocation;
     public Graphics gr;
     public boolean firstMove = true;
     private int[] lastXY;
+    private WorldMap map;
 
 
-    public PlayerMovement(Graphics gr){
+    public PlayerMovement(Graphics gr, WorldMap map){
         playerLocation = new char[GameSettings.w][GameSettings.h];
+        tempPlayerLocation = new char[GameSettings.w][GameSettings.h];
         this.gr = gr;
+        this.map = map;
     }
 
     public int[] getPlayerInput(int lastx, int lasty){
@@ -19,6 +23,9 @@ public class PlayerMovement {
         Scanner scan = new Scanner(System.in);
         
         //TODO: on start print out map
+        if(this.firstMove){
+            Render.drawMap(tempInitMap(lastx, lasty), this.map, gr, 999); 
+        }
 
         System.out.println("You are now at: " + translate.getLetter(lastx) + (lasty + 1));
         System.out.print("Input the coordinate of your desired destination: ");
@@ -63,4 +70,8 @@ public class PlayerMovement {
         return playerLocation;
     }
 
+    private char[][] tempInitMap(int x, int y){
+        this.tempPlayerLocation[x][y] = 'X';
+        return tempPlayerLocation;
+    }
 }
