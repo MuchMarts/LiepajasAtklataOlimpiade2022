@@ -47,6 +47,7 @@ public class PlayerMovement {
             System.out.println("Incorrect answer format brrr...\n");
             getPlayerInput(lastx, lasty);
         }
+        //TODO: fix bug with NumberFormatException
         return cords;
     }
 
