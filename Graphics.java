@@ -1,11 +1,11 @@
-/*
+
 import java.io.FileReader;
 import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-*/
+
 
 public class Graphics {
     
@@ -13,7 +13,7 @@ public class Graphics {
     String[] GameCreators;
 
     public Graphics(){
-        /*
+        
         JSONParser jsonParser = new JSONParser();
         try {
             FileReader reader = new FileReader("Graphics.json");
@@ -40,7 +40,7 @@ public class Graphics {
             e.printStackTrace();
             System.out.println("something went poopy");
         }
-        */
+        
         
     }
     
@@ -62,6 +62,7 @@ public class Graphics {
             System.out.println(line);
         }
     }
+    /*
     private String[] setBanner(){
         String[] bannerASCII = {
             "  _      _                  _                       _ _ _ _       ___   ___ ___  ___  ",
@@ -86,7 +87,7 @@ public class Graphics {
         };
         return creatorsASCII;
     }
-
+*/
     private String resolveInt(int x){
         String line = "000";
         if(x == 100){
@@ -112,13 +113,13 @@ public class Graphics {
     }
 
     public void banner(){
-        renderGraphics(setBanner());
-        //renderGraphics(this.Banner);
+        //renderGraphics(setBanner());
+        renderGraphics(this.Banner);
     }
 
     public void gameCreators(){
-        renderGraphics(setGameCreators());
-        //renderGraphics(this.GameCreators);
+        //renderGraphics(setGameCreators());
+        renderGraphics(this.GameCreators);
     }
 
     public void energyBar(int x){
