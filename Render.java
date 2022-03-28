@@ -25,8 +25,8 @@ public class Render {
             System.out.println();
         }
         
+        if(battery == 999){return;}
         gr.energyBar(battery);
-        
     }
 
     private static char[][] getCurrMapState(char[][] playerLocation, WorldMap map){

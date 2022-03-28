@@ -22,7 +22,7 @@ public class GameLoop {
         Graphics gr = graphics;
         WorldMap gameMap = new WorldMap(GameSettings.w, GameSettings.h);
         String name = "test"; //TODO: player input name
-        Player player = new Player(start_x, start_y, gr);
+        Player player = new Player(start_x, start_y, gr, gameMap);
 
         int i = 0;
 

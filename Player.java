@@ -6,17 +6,17 @@ public class Player {
     public Integer batteryCharge;
     private Integer distanceTraveled;
     private PlayerMovement movement;
-    
+
     public Integer lastx;
     public Integer lasty;
 
-    public Player(int start_x, int start_y, Graphics gr){
+    public Player(int start_x, int start_y, Graphics gr, WorldMap map){
         this.name = getPlayerName();
         this.batteryCharge = 100;
         this.distanceTraveled = 0;
         this.lastx = start_x;
         this.lasty = start_y;
-        this.movement = new PlayerMovement(gr);
+        this.movement = new PlayerMovement(gr, map);
     }
 
     public void chargeBattery(){

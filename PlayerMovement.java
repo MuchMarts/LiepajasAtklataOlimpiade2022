@@ -4,14 +4,18 @@ public class PlayerMovement {
     
     Translate translate = new Translate();
     public char[][] playerLocation;
+    private char[][] tempPlayerLocation;
     public Graphics gr;
     public boolean firstMove = true;
     private int[] lastXY;
+    private WorldMap map;
 
 
-    public PlayerMovement(Graphics gr){
+    public PlayerMovement(Graphics gr, WorldMap map){
         playerLocation = new char[GameSettings.w][GameSettings.h];
+        tempPlayerLocation = new char[GameSettings.w][GameSettings.h];
         this.gr = gr;
+        this.map = map;
     }
 
     //TODO: Bug where cordinates are wwrong lmao a1 = a2 and so on
@@ -21,8 +25,11 @@ public class PlayerMovement {
         Scanner scan = new Scanner(System.in);
         
         //TODO: on start print out map
+        if(this.firstMove){
+            Render.drawMap(tempInitMap(lastx, lasty), this.map, gr, 999); 
+        }
 
-        System.out.println("Tu tagad atrodies: " + translate.getLetter(lastx) + lasty);
+        System.out.println("Tu tagad atrodies: " + translate.getLetter(lastx) + (lasty));
         System.out.print("Ievadi koordinaatu, kur veelies doties: ");
         
         String input = scan.nextLine();
@@ -65,4 +72,8 @@ public class PlayerMovement {
         return playerLocation;
     }
 
+    private char[][] tempInitMap(int x, int y){
+        this.tempPlayerLocation[x][y] = 'X';
+        return tempPlayerLocation;
+    }
 }
