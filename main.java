@@ -13,7 +13,7 @@ public class main {
             int choice = StartScreen.validChoice(gr);
             switch(choice){
                 case -1: 
-                    System.out.println("Error: Can not choose an option");break;
+                    System.out.println("Error: Can not choose an option... Try again"); break;
                 case 1:
                     game.startGame(gr); break; //start game
                 case 2: break; //leaderboard
