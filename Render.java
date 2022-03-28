@@ -12,10 +12,8 @@ public class Render {
         }
         System.out.println();
         for(int y = 0; y < GameSettings.h; y++){
-            if(y<9){
+            if(y < 9){
                 System.out.print(" " + (y + 1) + " ");
-            //}else if(y==0){
-              //  System.out.print("   ");
             }else{
                 System.out.print((y + 1) + " ");
             }
