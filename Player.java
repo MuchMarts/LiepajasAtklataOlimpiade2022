@@ -33,7 +33,7 @@ public class Player {
     private void updateDistanceTraveled(int distance){
         this.distanceTraveled = this.distanceTraveled + distance;
     }
-
+    //TODO: fix random cord bugs and also maybe draw map before input as not to rely on it being drawn before
     public char[][] playerMove(){
         int[] playerCordinates;
         while(true){
