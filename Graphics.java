@@ -54,7 +54,7 @@ public class Graphics {
         System.out.println("\n\n");
         banner();
         System.out.println("\n");
-        CLIUtils.sec(1);
+        CLIUtils.wait(CLIUtils.sec(1));
     }
 
     private void renderGraphics(String[] graphic){
