@@ -37,12 +37,14 @@ public class Player {
     public void playerMove(){
         int[] playerCordinates;
         
-        playerCordinates = movement.getPlayerInput(lastx, lasty);
+        movement.getPlayerInput(lastx, lasty);
+        playerCordinates = movement.outCords;
 
         int x = playerCordinates[0];
         int y = playerCordinates[1];
         
-        int distance = GameHelper.calculateDistanceTraveled(lastx, lasty, x, y);
+        int distance = (Math.abs(x - lastx) + Math.abs(y - lasty)) * GameSettings.stepSize;
+
         updateDistanceTraveled(distance);
         useBattery(distance);
 
