@@ -1,6 +1,9 @@
 public class WorldMap {
     
+    //Stores Player location and World map
+
     public char[][] gameMap;
+    public char[][] playerLocation;
     public int width;
     public int height;
 
@@ -23,5 +26,27 @@ public class WorldMap {
             }
         }
 
+        this.playerLocation = new char[this.width][this.height]; 
+        //Init player location
+        for(int y = 0; y < this.height; y++){
+            for(int x = 0; x < this.width; x++){
+                if(x == GameSettings.start_x && y == GameSettings.start_y){
+                    this.playerLocation[x][y] = 'X';
+                }
+                }
+            }
     }
+
+    //Updates player location
+    public int[] movePlayer(int[] playerCordinates, int[] lastCordinates) {
+        
+        int x = playerCordinates[0];
+        int y = playerCordinates[1];
+
+        playerLocation[lastCordinates[0]][lastCordinates[1]] = ' ';
+        playerLocation[x][y] = 'X';
+        
+        return playerCordinates; 
+    }
+
 }

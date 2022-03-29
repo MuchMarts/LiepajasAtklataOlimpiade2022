@@ -19,6 +19,10 @@ public class Translate {
         int i = 0;
         while(alphabet.get(i) != letter.charAt(0)){
             i++;
+            if(i == 26){
+                i = -1;
+                break;
+            }
         }
         return i;
     }
