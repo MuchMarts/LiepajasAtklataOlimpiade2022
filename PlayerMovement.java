@@ -10,7 +10,7 @@ public class PlayerMovement {
     private int[] lastXY;
     private WorldMap map;
 
-
+    //TODO: Validate that move aint bigger than ur battery
     public PlayerMovement(Graphics gr, WorldMap map){
         playerLocation = new char[GameSettings.w][GameSettings.h];
         tempPlayerLocation = new char[GameSettings.w][GameSettings.h];
@@ -48,7 +48,6 @@ public class PlayerMovement {
             System.out.println("Incorrect answer format brrr...\n");
             return null;
         }
-        //TODO: fix bug with NumberFormatException
     }
 
     public char[][] movePlayer(int[] playerCordinates){        

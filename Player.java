@@ -87,6 +87,7 @@ public class Player {
                 choiceValid = false;}
 
         }
+        CLIUtils.ClearConsole();
         return name;
     }
 
