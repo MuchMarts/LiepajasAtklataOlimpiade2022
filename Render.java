@@ -1,10 +1,10 @@
 public class Render {
 
-    public static void drawMap(char[][] playerLocation, WorldMap map, Graphics gr, int battery){
+    public static void drawMap(WorldMap map, Graphics gr, int battery){
         
         gr.banner();
 
-        char[][] currMap = getCurrMapState(playerLocation, map);
+        char[][] currMap = getCurrMapState(map);
 
         System.out.print("   ");
         for(int i = 0; i < GameSettings.w; i++){
@@ -27,12 +27,12 @@ public class Render {
         gr.energyBar(battery);
     }
 
-    private static char[][] getCurrMapState(char[][] playerLocation, WorldMap map){
+    private static char[][] getCurrMapState(WorldMap map){
         char[][] currentMapState = new char[map.width][map.height];
         
         for(int y = 0; y < map.height; y++){
             for(int x = 0; x < map.width; x++){
-                if(playerLocation[x][y] == 'X'){
+                if(map.playerLocation[x][y] == 'X'){
                     currentMapState[x][y] = 'X';
                 } else {
                     currentMapState[x][y] = map.gameMap[x][y];

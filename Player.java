@@ -10,7 +10,7 @@ public class Player {
     public Integer lasty;
 
     public Player(int start_x, int start_y, Graphics gr, WorldMap map){
-        this.name = getPlayerName();
+        this.name = "test";//getPlayerName();
         this.batteryCharge = 100;
         this.distanceTraveled = 0;
         this.lastx = start_x;
@@ -34,29 +34,20 @@ public class Player {
         this.distanceTraveled = this.distanceTraveled + distance;
     }
     //TODO: fix random cord bugs and also maybe draw map before input as not to rely on it being drawn before
-    public char[][] playerMove(){
+    public void playerMove(){
         int[] playerCordinates;
-        while(true){
-            playerCordinates = movement.getPlayerInput(lastx, lasty);
-            if(playerCordinates != null){
-                if(playerCordinates[0] <= GameSettings.w){
-                    break;}
-            }
-        }
+        
+        playerCordinates = movement.getPlayerInput(lastx, lasty);
 
         int x = playerCordinates[0];
         int y = playerCordinates[1];
         
-        char[][] playerLocation = movement.movePlayer(playerCordinates);
-
         int distance = GameHelper.calculateDistanceTraveled(lastx, lasty, x, y);
         updateDistanceTraveled(distance);
         useBattery(distance);
 
         this.lastx = x;
         this.lasty = y;
-
-        return playerLocation;
     }
 
     public String getPlayerName(){

@@ -11,7 +11,8 @@ public class GameLoop {
         Player player = new Player(start_x, start_y, gr, gameMap);
 
         while(player.batteryCharge > 0){
-            Render.drawMap(player.playerMove(), gameMap, gr, player.batteryCharge);
+            Render.drawMap(gameMap, gr, player.batteryCharge);
+            player.playerMove();
         }
 
         return 1;
