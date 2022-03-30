@@ -28,13 +28,7 @@ public class PlayerMovement {
     public boolean checkInputValidity(String input){
         if(input.length() > 1){
             if(translate.getInteger(input.substring(0,1).toUpperCase()) != -1){
-                int[] cords = {
-                    translate.getInteger(input.substring(0,1).toUpperCase()),
-                    translate.getInteger(input.substring(0,1).toUpperCase()) - 1
-                };
-                if(isValidPath(cords)){                    
-                    return true;
-                }
+                return true;
             }
         }
         return false;
@@ -62,9 +56,12 @@ public class PlayerMovement {
                 if(this.firstMove){ this.lastXY[0] = lastx; this.lastXY[0] = lasty; this.firstMove = false;}
                 
                 cords[0] = x; cords[1] = y - 1;
-                CLIUtils.ClearConsole();
-                    
-                this.outCords = cords;
+                if(isValidPath(cords)){
+                    CLIUtils.ClearConsole();
+                    this.outCords = cords;
+                } else {
+                    getPlayerInput(lastx, lasty);
+                }
                 }
             } 
             catch(NumberFormatException e){
