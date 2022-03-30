@@ -1,6 +1,4 @@
-import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Set;
 
 public class PlayerMovement {
     
@@ -20,10 +18,23 @@ public class PlayerMovement {
         this.outCords = new int[2];
     }
 
+    private boolean isValidPath(int[] cords){
+        if(map.paths[cords[1]][cords[0]] == 0){
+            return false;
+        }
+        return true;
+    }
+
     public boolean checkInputValidity(String input){
         if(input.length() > 1){
             if(translate.getInteger(input.substring(0,1).toUpperCase()) != -1){
-                return true;
+                int[] cords = {
+                    translate.getInteger(input.substring(0,1).toUpperCase()),
+                    translate.getInteger(input.substring(0,1).toUpperCase()) - 1
+                };
+                if(isValidPath(cords)){                    
+                    return true;
+                }
             }
         }
         return false;
@@ -71,13 +82,7 @@ public class PlayerMovement {
         int[] end = {playerCordinates[1], playerCordinates[0]};
         int[] start = {this.lastXY[1], this.lastXY[0]};        
         int[][] path = shortestPathBetweenPoints.findShortestPath(map.paths, start, end);
-        
-
-        if(path.length < 2){
-            System.out.println("Something major broke");
-            return null;
-        }
-
+        this.lastXY = path[path.length-1]; 
         return path;
     }
 }

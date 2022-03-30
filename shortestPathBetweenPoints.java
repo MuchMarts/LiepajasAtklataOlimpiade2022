@@ -1,5 +1,3 @@
-import java.io.PipedOutputStream;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class shortestPathBetweenPoints {
@@ -24,7 +22,7 @@ public class shortestPathBetweenPoints {
         int dx = end[0];    int dy = end[1];
 
         //Double checks if path is possible. If end or start cordinates on a square that is not a path big bad.
-        if(gameMap[sx][sy] == 0 || gameMap[dx][dy] == 0){
+        if(gameMap[sx][sy] == 0 && gameMap[dx][dy] == 0){
             System.out.println("Invalid start/end location");
             return null;
         }
@@ -105,6 +103,7 @@ public class shortestPathBetweenPoints {
              }
             return output;
         }
+        System.out.println("I broke");
         return null;
     }
 
@@ -127,7 +126,7 @@ public class shortestPathBetweenPoints {
             queue.add(p);
         }
     }
-
+/*
     public static void main(String[] args) {
         int[][] matrix = {
             {1, 0, 1},
@@ -145,5 +144,5 @@ public class shortestPathBetweenPoints {
             int[] end1 = {2, 2};
             System.out.print("case 2: ");
             System.out.println(Arrays.deepToString(findShortestPath(matrix, start1, end1)));     
-    }
+    */
 }

@@ -1,7 +1,8 @@
 public class Render {
 
     public static void drawMap(WorldMap map, Graphics gr, int battery){
-        
+        CLIUtils.ClearConsole();
+
         gr.banner();
 
         char[][] currMap = getCurrMapState(map);
@@ -27,9 +28,12 @@ public class Render {
     }
 
     public static void drawMapAnim(WorldMap map, Graphics gr, int battery){
+        
         char[][] currMap = getCurrMapState(map);
 
         CLIUtils.ClearConsole();
+
+        gr.banner();
 
         System.out.print("   ");
         for(int i = 0; i < GameSettings.w; i++){
@@ -47,6 +51,9 @@ public class Render {
             }
             System.out.println();
         }
+
+        gr.energyBar(battery);
+
         CLIUtils.wait(1000);
     }
 
