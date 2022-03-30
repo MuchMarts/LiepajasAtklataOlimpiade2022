@@ -1,6 +1,7 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,9 +12,11 @@ public class CheckpointParser {
 
     private HashMap<String, HashMap<String, String>> checkpointMap = new HashMap<>();
     private HashMap<String, HashMap<String, String>> chargerMap = new HashMap<>();
+    private Map<Integer, Character> alphabet;
 
 
     public CheckpointParser(){
+        translate();
         //reads JSON file and returns Map<key = coordinate(X0), value = Map<key = attribute, value = value>>
         JSONParser jsonParser = new JSONParser();
         try(FileReader reader = new FileReader("Checkpoints.json");) {
@@ -86,5 +89,30 @@ public class CheckpointParser {
 
     public HashMap <String, HashMap<String, String>> chargeStationsInAMap(){
         return this.chargerMap;
+    }
+
+    //HANDLING COORDINATE HUMAN FORMAT PARSING TO COMPUTER FORMAT
+    public void translate(){
+        alphabet = new HashMap<>();
+        for(int i = 0; i < 26; i++){ 
+            //creates a map where every letter of the alphabet has an according integer(1-26)
+            alphabet.put(i, (char)(i + 17 + '0'));
+        }
+    }
+
+    public int getInteger(String letter){
+        int i = 0;
+        while(alphabet.get(i) != letter.charAt(0)){
+            i++;
+            if(i == 26){
+                i = -1;
+                break;
+            }
+        }
+        return i;
+    }
+
+    public char getLetter(int number){
+        return alphabet.get(number);
     }
 }
