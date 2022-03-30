@@ -4,6 +4,7 @@ public class main {
         boolean gameActive = true;
         GameLoop game = new GameLoop();
         Graphics gr = new Graphics();
+        CheckpointParser ch = new CheckpointParser();
         CLIUtils.ClearConsole();
 
         //GameLoop
@@ -15,7 +16,7 @@ public class main {
                 case -1: 
                     System.out.println("Error: Can not choose an option... Try again"); break;
                 case 1:
-                    game.startGame(gr); break; //start game
+                    game.startGame(gr, ch); break; //start game
                 case 2: break; //leaderboard
                 case 3: break; //edit tasks
                 case 4: break; // edit map

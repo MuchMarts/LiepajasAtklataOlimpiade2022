@@ -12,7 +12,7 @@ public class Player {
     public Integer lastx;
     public Integer lasty;
 
-    public Player(int start_x, int start_y, Graphics gr, WorldMap map){
+    public Player(int start_x, int start_y, Graphics gr, WorldMap map, CheckpointParser ch){
         this.name = "test";//getPlayerName();
         this.batteryCharge = 100;
         this.distanceTraveled = 0;

@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class WorldMap {
     
     //Stores Player location and World map
@@ -9,7 +11,7 @@ public class WorldMap {
     public int height;
     public int[] playerLastCordinates;
 
-    public WorldMap(int w, int h){
+    public WorldMap(int w, int h, CheckpointParser ch){
         this.width = w;
         this.height = h;
         this.playerLastCordinates = new int[2];
@@ -23,11 +25,18 @@ public class WorldMap {
     private void initMap(){
         this.gameMap = new char[this.width][this.height];
         //TODO: Read map info from somewhere
-
+        CheckpointParser ch = new CheckpointParser();
         //Intializes map data (RN TEMP FILLED WITH -)
+
         for(int y = 0; y < this.height; y++){
             for(int x = 0; x < this.width; x++){
                 this.gameMap[x][y] = '-';
+                String coor = ch.getLetter(x) + Integer.toString(y + 1);
+                if(ch.checkpointsInAMap().containsKey(coor)){
+                    this.gameMap[x][y] = '@';
+                }else if(ch.chargeStationsInAMap().containsKey(coor)){
+                    this.gameMap[x][y] = '$';
+                }
             }
         }
 
