@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Player {
@@ -8,6 +10,7 @@ public class Player {
     private WorldMap map;
     private Graphics gr;
     private PlayerMovement movement;
+    private CheckpointParser ch;
 
     public Integer lastx;
     public Integer lasty;
@@ -20,6 +23,7 @@ public class Player {
         this.lasty = start_y;
         this.map = map;
         this.gr = gr;
+        this.ch = ch;
         this.movement = new PlayerMovement(gr, map);
     }
 
@@ -66,7 +70,37 @@ public class Player {
                 this.lastx = playerPos[0];
                 this.lasty = playerPos[1];
             }
-        }      
+        }
+        //manageLocations();
+    }
+
+    public void manageLocations(){
+        Scanner sc = new Scanner(System.in);
+        String coor = ch.getLetter(lastx) + Integer.toString(lasty + 1);
+        boolean answer = false;
+        while(!answer){
+            if(ch.isCheckPoint(coor)){
+                System.out.println("Location: " + ch.checkpointsInAMap().get(coor).get("name"));
+                System.out.println(ch.checkpointsInAMap().get(coor).get("task"));
+                String user_answer = sc.nextLine();
+                ArrayList<String> arr = new ArrayList<>(Arrays.asList(ch.checkpointsInAMap().get(coor).get("answer").split(", ")));
+                if(!arr.contains(user_answer.toUpperCase())){
+                    System.out.println("Wrong answer... Try again!");
+                    answer = false;
+                }else{
+                    answer = true; break;
+                }
+            }else if(ch.isChargeStation(coor)){
+                System.out.println("Location: " + ch.chargeStationsInAMap().get(coor).get("name"));
+                if(ch.chargeStationsInAMap().get(coor).get("name") == "SuperCharge"){
+                    this.batteryCharge = 150;
+                    answer = true; break;
+                }else{
+                    chargeBattery();
+                    answer = true; break;
+                }
+            }
+        }            
     }
 
     public String getPlayerName(){
