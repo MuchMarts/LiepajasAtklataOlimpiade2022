@@ -11,7 +11,7 @@ public class WorldMap {
     public int height;
     public int[] playerLastCordinates;
 
-    public WorldMap(int w, int h){
+    public WorldMap(int w, int h, CheckpointParser ch){
         this.width = w;
         this.height = h;
         this.playerLastCordinates = new int[2];
@@ -40,9 +40,6 @@ public class WorldMap {
             }
         }
 
-<<<<<<< HEAD
-        //checkpoints.forEach();
-=======
         int[][] tempPath = {
             {0,0},
             {0,1},
@@ -61,7 +58,6 @@ public class WorldMap {
         for(int[] cords : tempPath){
             this.gameMap[cords[0]][cords[1]] = '=';
         }
->>>>>>> 86a17da0fa41c3a6d5dc67d81bb0bd1b34fc730f
 
         this.playerLocation = new char[this.width][this.height]; 
         //Init player location
