@@ -2,24 +2,81 @@
     "checkpoints" : [
         {
             "point" : "A1",
-            "location" : "0,0",
-            "name" : "Riga",
-            "task" : "If you have 2 cats on the roof facing each other, are they in love?",
-            "answer" : "YES"
+            "name" : "Riga State Gymnasium No 1",
+            "task" : "Who is the most famous alum of this school?",
+            "answer" : "RAINIS, JANIS PLIEKSANS, PLIEKSANS"
         },
         {
-            "point" : "C3",
-            "location" : "2,3",
+            "point" : "C2",
             "name" : "Cenas Tirelis",
             "task" : "Who will you meet at a swamp that is green and big?",
             "answer" : "SHREK"
+        },
+        {
+            "point" : "D6",
+            "name" : "Jelgava",
+            "task" : "Can you find a McDonald's here?",
+            "answer" : "YES, JA, JAA, Y, J"
+        },
+        {
+            "point" : "F7",
+			"name" : "Dobele",
+			"task" : "What colour traditionally are the flowers that bloom in May and attract hundreds of tourists here every year?",
+			"answer" : "PURPLE, VIOLET, VIOLETS, LILAC, LILLA"
+        },
+        {
+            "point" : "H4",
+			"name" : "Saldus",
+			"task" : "What is a common collocation used with this city's name? Saldus ______ ",
+			"answer" : "SAULE, SUN"
+        },
+        {
+            "point" : "K6",
+			"name" : "Skrunda",
+			"task" : "What river flows on the border of this Latvian city?",
+			"answer" : "VENTA"
+        },
+        {
+            "point" : "G14",
+			"name" : "Auce",
+			"task" : "Which form of Christianity saw its first church in Latvia in this city?",
+			"answer" : "LUTHERANISM, LUTERANISMS"
+        },
+        {
+            "point" : "E11",
+			"name" : "Tervete",
+			"task" : "What is the most popular tourist destination in this city?",
+			"answer" : "THE NATURE PARK, NATURE PARK, PARK, TERVETE NATURE PARK, TERVETES DABAS PARKS, DABAS PARKS, PARKS"
+        },
+        {
+            "point" : "M12",
+			"name" : "Grobina",
+			"task" : "Which musical duo has written a song about driving through this city?",
+			"answer" : "AARZEMNIEKI, ARZEMNIEKI"
+        },
+        {
+            "point" : "N12",
+			"name" : "Liepaja",
+			"task" : "According to a popular song, who is born in this city?",
+			"answer" : "THE WIND, WIND, VEJS"
         }
     ],
     "chargers" : [
         {
             "point" : "F5",
-            "location" : "5,4",
             "name" : "Statoil"
+        },
+        {
+            "point" : "I10",
+            "name" : "Virsi"
+        },
+        {
+            "point" : "B9",
+            "name" : "Circle K"
+        },
+        {
+            "point" : "M2",
+            "name" : "SuperCharge"
         }
     ]
 }
