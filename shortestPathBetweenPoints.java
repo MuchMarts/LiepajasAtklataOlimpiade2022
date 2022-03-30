@@ -1,3 +1,5 @@
+import java.io.PipedOutputStream;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class shortestPathBetweenPoints {
@@ -13,15 +15,10 @@ public class shortestPathBetweenPoints {
             this.distance = distance;
             this.parentCell = parentCell;
         }
-
-        @Override
-        public String toString(){
-            return "(" + x + "," + y + ")";
-        }
     }
 
     //BFS Algo
-    public static void findShortestPath(int[][] gameMap, int[] start, int[] end) {
+    public static int[][] findShortestPath(int[][] gameMap, int[] start, int[] end) {
         
         int sx = start[0];  int sy = start[1];
         int dx = end[0];    int dy = end[1];
@@ -29,7 +26,7 @@ public class shortestPathBetweenPoints {
         //Double checks if path is possible. If end or start cordinates on a square that is not a path big bad.
         if(gameMap[sx][sy] == 0 || gameMap[dx][dy] == 0){
             System.out.println("Invalid start/end location");
-            return;
+            return null;
         }
 
         //init Cells <= Path objects used to find shortest path. Each cell is a Verteci
@@ -97,8 +94,18 @@ public class shortestPathBetweenPoints {
                 path.addFirst(checkCell);
             } while ((checkCell = checkCell.parentCell) != null);
             //TODO: This info needs to go somewhere to be *animated*
-            System.out.println(path);
+            int[][] output = new int[path.size()][2];            
+            //Create output info int[][] first element is distance rest is path
+            for(int i = 0; i < path.size(); i++){
+    
+                //Cords swapped from yx to xy
+                output[i][1] = path.get(i).x;
+                output[i][0] = path.get(i).y;
+        
+             }
+            return output;
         }
+        return null;
     }
 
     //Update Cell visit status
@@ -131,12 +138,12 @@ public class shortestPathBetweenPoints {
             int[] start = {0, 0};
             int[] end = {1, 2};
             System.out.print("case 1: ");
-            findShortestPath(matrix, start, end);
+            System.out.println(findShortestPath(matrix, start, end));
         
             //case 2, there is path
             int[] start1 = {0, 2};
             int[] end1 = {2, 2};
             System.out.print("case 2: ");
-            findShortestPath(matrix, start1, end1);     
+            System.out.println(Arrays.deepToString(findShortestPath(matrix, start1, end1)));     
     }
 }

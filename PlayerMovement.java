@@ -1,11 +1,11 @@
+import java.util.LinkedList;
 import java.util.Scanner;
-
-import javax.swing.InputMap;
-import javax.swing.text.IconView;
+import java.util.Set;
 
 public class PlayerMovement {
     
     Translate translate = new Translate();
+    shortestPathBetweenPoints pathFind = new shortestPathBetweenPoints();
     public Graphics gr;
     public boolean firstMove = true;
     public int[] outCords;
@@ -52,10 +52,9 @@ public class PlayerMovement {
                 
                 cords[0] = x; cords[1] = y - 1;
                 CLIUtils.ClearConsole();
-                
-                movePlayer(cords);
+                    
                 this.outCords = cords;
-            }
+                }
             } 
             catch(NumberFormatException e){
                 System.out.println("Incorrect answer format brrr...\n");
@@ -67,9 +66,19 @@ public class PlayerMovement {
         }
     }
 
-    private void movePlayer(int[] playerCordinates){        
+    public int[][] movePlayer(int[] playerCordinates){        
         if(playerCordinates == null){ System.out.println("Error calculating current coordinates");}
-        this.lastXY = map.movePlayer(playerCordinates, this.lastXY);
+        int[] end = {playerCordinates[1], playerCordinates[0]};
+        int[] start = {this.lastXY[1], this.lastXY[0]};        
+        int[][] path = shortestPathBetweenPoints.findShortestPath(map.paths, start, end);
+        
+
+        if(path.length < 2){
+            System.out.println("Something major broke");
+            return null;
+        }
+
+        return path;
     }
 }
 
