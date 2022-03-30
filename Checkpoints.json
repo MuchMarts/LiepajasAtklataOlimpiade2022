@@ -1,0 +1,25 @@
+{
+    "checkpoints" : [
+        {
+            "point" : "A1",
+            "location" : "0,0",
+            "name" : "Riga",
+            "task" : "If you have 2 cats on the roof facing each other, are they in love?",
+            "answer" : "YES"
+        },
+        {
+            "point" : "C3",
+            "location" : "2,3",
+            "name" : "Cenas Tirelis",
+            "task" : "Who will you meet at a swamp that is green and big?",
+            "answer" : "SHREK"
+        }
+    ],
+    "chargers" : [
+        {
+            "point" : "F5",
+            "location" : "5,4",
+            "name" : "Statoil"
+        }
+    ]
+}
