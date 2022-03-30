@@ -1,11 +1,9 @@
 import java.util.Scanner;
 
-import javax.swing.InputMap;
-import javax.swing.text.IconView;
-
 public class PlayerMovement {
     
     Translate translate = new Translate();
+    shortestPathBetweenPoints pathFind = new shortestPathBetweenPoints();
     public Graphics gr;
     public boolean firstMove = true;
     public int[] outCords;
@@ -20,10 +18,23 @@ public class PlayerMovement {
         this.outCords = new int[2];
     }
 
+    private boolean isValidPath(int[] cords){
+        if(map.paths[cords[1]][cords[0]] == 0){
+            return false;
+        }
+        return true;
+    }
+
     public boolean checkInputValidity(String input){
         if(input.length() > 1){
             if(translate.getInteger(input.substring(0,1).toUpperCase()) != -1){
-                return true;
+                int[] cords = {
+                    translate.getInteger(input.substring(0,1).toUpperCase()),
+                    translate.getInteger(input.substring(0,1).toUpperCase()) - 1
+                };
+                if(isValidPath(cords)){                    
+                    return true;
+                }
             }
         }
         return false;
@@ -52,10 +63,9 @@ public class PlayerMovement {
                 
                 cords[0] = x; cords[1] = y - 1;
                 CLIUtils.ClearConsole();
-                
-                movePlayer(cords);
+                    
                 this.outCords = cords;
-            }
+                }
             } 
             catch(NumberFormatException e){
                 System.out.println("Incorrect answer format brrr...\n");
@@ -67,9 +77,13 @@ public class PlayerMovement {
         }
     }
 
-    private void movePlayer(int[] playerCordinates){        
+    public int[][] movePlayer(int[] playerCordinates){        
         if(playerCordinates == null){ System.out.println("Error calculating current coordinates");}
-        this.lastXY = map.movePlayer(playerCordinates, this.lastXY);
+        int[] end = {playerCordinates[1], playerCordinates[0]};
+        int[] start = {this.lastXY[1], this.lastXY[0]};        
+        int[][] path = shortestPathBetweenPoints.findShortestPath(map.paths, start, end);
+        this.lastXY = path[path.length-1]; 
+        return path;
     }
 }
 

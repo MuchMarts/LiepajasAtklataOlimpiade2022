@@ -4,6 +4,9 @@ public class Player {
     public String name;
     public Integer batteryCharge;
     private Integer distanceTraveled;
+    
+    private WorldMap map;
+    private Graphics gr;
     private PlayerMovement movement;
 
     public Integer lastx;
@@ -15,6 +18,8 @@ public class Player {
         this.distanceTraveled = 0;
         this.lastx = start_x;
         this.lasty = start_y;
+        this.map = map;
+        this.gr = gr;
         this.movement = new PlayerMovement(gr, map);
     }
 
@@ -35,21 +40,33 @@ public class Player {
     }
     //TODO: fix random cord bugs and also maybe draw map before input as not to rely on it being drawn before
     public void playerMove(){
-        int[] playerCordinates;
-        
+
         movement.getPlayerInput(lastx, lasty);
-        playerCordinates = movement.outCords;
+        int[][] path = movement.movePlayer(movement.outCords);  
+            
+        if(path == null){
+            System.out.println("Path incorectly generated");
+            return;
+        }
 
-        int x = playerCordinates[0];
-        int y = playerCordinates[1];
-        
-        int distance = (Math.abs(x - lastx) + Math.abs(y - lasty)) * GameSettings.stepSize;
+        int[] lastCords = new int[2];
 
-        updateDistanceTraveled(distance);
-        useBattery(distance);
+        for(int[] playerPos : path){
+            lastCords[0] = this.lastx;
+            lastCords[1] = this.lasty;
 
-        this.lastx = x;
-        this.lasty = y;
+            if(playerPos[0] == this.lastx && playerPos[1] == this.lasty){
+                this.lastx = playerPos[0];
+                this.lasty = playerPos[1];
+            } else {
+                map.movePlayer(playerPos, lastCords);
+                useBattery(GameSettings.stepSize);
+                updateDistanceTraveled(GameSettings.stepSize);
+                Render.drawMapAnim(this.map, this.gr, this.batteryCharge);
+                this.lastx = playerPos[0];
+                this.lasty = playerPos[1];
+            }
+        }      
     }
 
     public String getPlayerName(){
