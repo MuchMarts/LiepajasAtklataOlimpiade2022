@@ -91,6 +91,7 @@ public class CheckpointParser {
         return this.chargerMap;
     }
 
+    
     //HANDLING COORDINATE HUMAN FORMAT PARSING TO COMPUTER FORMAT
     public void translate(){
         alphabet = new HashMap<>();

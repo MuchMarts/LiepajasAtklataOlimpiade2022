@@ -82,13 +82,14 @@ public class Graphics {
     
     private String resolveInt(int x){
         String line = "000";
-        if(x == 100){
+        if(x > 99 && x < 999){
             line = String.valueOf(x);
         } else if ( x < 100 && x >= 10){
             line = "0" + String.valueOf(x);
         } else if (x < 10 && x >= 0){
             line = "00" + String.valueOf(x);
         } else {
+            line = String.valueOf(x % 100).substring(0,3);
             System.out.println("Something broke lmao ripaks");
         }
         return ("  ###    "+line+"%    ### ");
@@ -124,5 +125,31 @@ public class Graphics {
 
     public void energyBar(int x){
         renderGraphics(setEnergy(resolveInt(x)));
+    }
+
+    public void colourRoad(){
+        System.out.print(
+            ConsoleColour.WHITE_BOLD_BRIGHT + GameSettings.road + " " + ConsoleColour.RESET
+        );
+    }
+    public void colourCheckPoint(){
+        System.out.print(
+            ConsoleColour.YELLOW_BACKGROUND + GameSettings.checkPoint + " " + ConsoleColour.RESET
+        );
+    }
+    public void colourChargePoint(){
+        System.out.print(
+            ConsoleColour.GREEN_BACKGROUND + GameSettings.chargePoint+ " " + ConsoleColour.RESET
+        );
+    }
+    public void colourPlayer(){
+        System.out.print(
+            ConsoleColour.RED_BOLD + GameSettings.player + " " + ConsoleColour.RESET
+        );
+    }
+    public void colourEmpty(){
+        System.out.print(
+            ConsoleColour.BLACK + GameSettings.empty + " " + ConsoleColour.RESET
+        );
     }
 }

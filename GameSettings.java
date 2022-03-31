@@ -11,4 +11,11 @@ public class GameSettings {
     public static int start_x = 0;
     public static int start_y = 0;
 
+    //Symbols for map locations
+    public static char road = '=';
+    public static char checkPoint = '@';
+    public static char chargePoint = '$';
+    public static char player = 'X';
+    public static char empty = '-';
+
 }
