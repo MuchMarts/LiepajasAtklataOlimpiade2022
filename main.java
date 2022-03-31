@@ -5,6 +5,8 @@ public class main {
         GameLoop game = new GameLoop();
         Graphics gr = new Graphics();
         CheckpointParser ch = new CheckpointParser();
+        Leaderboard lead = new Leaderboard();
+
         CLIUtils.ClearConsole();
 
         //GameLoop
@@ -16,11 +18,9 @@ public class main {
                 case -1: 
                     System.out.println("Error: Can not choose an option... Try again"); break;
                 case 1:
-                    game.startGame(gr, ch); break; //start game
-                case 2: break; //leaderboard
-                case 3: break; //edit tasks
-                case 4: break; // edit map
-                case 5: gameActive = false; break;
+                    game.startGame(gr, ch, lead); break; //start game
+                case 2: lead.showBestTimes();break; //leaderboard
+                case 3: gameActive = false; break;
             }
             CLIUtils.exitGame();
         }

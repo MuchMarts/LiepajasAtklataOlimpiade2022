@@ -11,8 +11,6 @@ public class StartScreen {
                 case 1: isValid = true;
                 case 2: isValid = true;
                 case 3: isValid = true;
-                case 4: isValid = true;
-                case 5: isValid = true;
                 default: break;
             }
             if(isValid){
@@ -35,15 +33,13 @@ public class StartScreen {
 
         System.out.println("[1] Start game");
         System.out.println("[2] Leaderboard");
-        System.out.println("[3] Task editor");
-        System.out.println("[4] Map editor");
-        System.out.println("[5] Exit");      
+        System.out.println("[3] Exit");      
 
         System.out.println("\nChoose an option: ");
         
         if(sc.hasNextInt()){
             int x = sc.nextInt();
-            if(x >= 1 && x <=5){
+            if(x >= 1 && x <=3){
                 state = x;
             } else {
                 CLIUtils.ClearConsole();

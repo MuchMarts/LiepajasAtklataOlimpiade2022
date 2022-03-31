@@ -89,8 +89,7 @@ public class Graphics {
         } else if (x < 10 && x >= 0){
             line = "00" + String.valueOf(x);
         } else {
-            line = String.valueOf(x % 100).substring(0,3);
-            System.out.println("Something broke lmao ripaks");
+            System.out.println("Ran out of batterry ;-;");
         }
         return ("  ###    "+line+"%    ### ");
     }
