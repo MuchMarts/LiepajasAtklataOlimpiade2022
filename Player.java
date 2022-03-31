@@ -105,7 +105,6 @@ public class Player {
 
         int[] lastCords = new int[2];
 
-        while(batteryCharge != 0){
             for(int[] playerPos : path){
                 lastCords[0] = this.lastx;
                 lastCords[1] = this.lasty;
@@ -122,7 +121,6 @@ public class Player {
                     this.lasty = playerPos[1];
                 }
             }
-        }
         if(batteryCharge <= 0){
             callTowTruck();
         }
