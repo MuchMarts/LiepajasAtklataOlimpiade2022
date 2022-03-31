@@ -12,8 +12,6 @@ public class GameLoop {
 
         while(player.batteryCharge > 0){
             Render.drawMap(gameMap, gr, player.batteryCharge);
-            
-            player.manageLocations();
             player.playerMove();
         }
 
