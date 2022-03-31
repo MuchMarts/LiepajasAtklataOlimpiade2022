@@ -63,7 +63,13 @@ public class Render {
                 System.out.print((y + 1) + " ");
             }
             for(int x = 0; x < GameSettings.w; x++){
-                System.out.print(currMap[x][y] + " ");
+                switch(currMap[x][y]){
+                    case '=' : gr.colourRoad(); break;
+                    case '@' : gr.colourCheckPoint(); break;
+                    case '$' : gr.colourChargePoint(); break;
+                    case '-' : gr.colourEmpty(); break;
+                    case 'X' : gr.colourPlayer();break;
+                }
             }
             System.out.println();
         }

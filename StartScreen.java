@@ -11,8 +11,6 @@ public class StartScreen {
                 case 1: isValid = true;
                 case 2: isValid = true;
                 case 3: isValid = true;
-                case 4: isValid = true;
-                case 5: isValid = true;
                 default: break;
             }
             if(isValid){
@@ -41,7 +39,7 @@ public class StartScreen {
         
         if(sc.hasNextInt()){
             int x = sc.nextInt();
-            if(x >= 1 && x <=5){
+            if(x >= 1 && x <=3){
                 state = x;
             } else {
                 CLIUtils.ClearConsole();

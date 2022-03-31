@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class GameLoop {
 
-    public int startGame(Graphics graphics, CheckpointParser ch){
+    public int startGame(Graphics graphics, CheckpointParser ch, Leaderboard banana){
         CLIUtils.ClearConsole();
 
         int start_x = GameSettings.start_x;
@@ -10,13 +10,16 @@ public class GameLoop {
 
         Graphics gr = graphics;
         WorldMap gameMap = new WorldMap(GameSettings.w, GameSettings.h, ch);
-        Player player = new Player(start_x, start_y, gr, gameMap, ch);
+        Leaderboard lead = banana;
+        Player player = new Player(start_x, start_y, gr, gameMap, ch, lead);
+
 
         Random rd = new Random();
         boolean rain = rd.nextBoolean();
         player.setRain(rain);
 
-        while(player.answeredQuestions < 2){
+        while(player.answeredQuestions < 10){
+            player.startTime();
             Render.drawMap(gameMap, gr, player.batteryCharge, rain);
             
             player.manageLocations();
@@ -26,7 +29,8 @@ public class GameLoop {
             }
             player.playerMove();
         }
-        
+
+        player.endGame();
         Render.gameWin(player);
 
         return 1;

@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -8,16 +9,23 @@ public class Player {
     private Integer distanceTraveled;
     private boolean rain;
     public int answeredQuestions;
+    public String playedTimeString;
+    
+    private long startTime;
+    private long endTime;
+    private long gameTimeMs;
     
     private WorldMap map;
     private Graphics gr;
     private PlayerMovement movement;
     private CheckpointParser ch;
 
+    private Leaderboard lead;
+
     public Integer lastx;
     public Integer lasty;
 
-    public Player(int start_x, int start_y, Graphics gr, WorldMap map, CheckpointParser ch){
+    public Player(int start_x, int start_y, Graphics gr, WorldMap map, CheckpointParser ch, Leaderboard leaderboard){
         this.name = "test";//getPlayerName();
         this.batteryCharge = 100;
         this.distanceTraveled = 0;
@@ -28,7 +36,26 @@ public class Player {
         this.ch = ch;
         this.movement = new PlayerMovement(gr, map);
         this.answeredQuestions = 0;
+        this.lead = leaderboard;
     }
+
+    public void startTime(){
+        this.startTime = System.currentTimeMillis();
+    }
+    
+    public void endGame(){
+        endTime = System.currentTimeMillis();
+        
+        Long gameTime = endTime - startTime;
+        gameTimeMs = gameTime;
+         
+        SimpleDateFormat format = new SimpleDateFormat("mm:ss");
+        playedTimeString = format.format(gameTimeMs);
+
+        lead.addResult(playedTimeString, this.name);
+    }
+
+
 
     public void setRain(boolean rain){
         this.rain = rain;
