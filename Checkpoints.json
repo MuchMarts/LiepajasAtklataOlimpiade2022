@@ -4,97 +4,78 @@
             "point" : "A1",
             "name" : "Riga State Gymnasium No 1",
             "task" : "Who is the most famous alum of this school?",
-            "answer" : "RAINIS, JANIS PLIEKSANS, PLIEKSANS",
-            "nodes" : "B1"
+            "answer" : "RAINIS, JANIS PLIEKSANS, PLIEKSANS"
         },
         {
             "point" : "C2",
             "name" : "Cenas Tirelis",
             "task" : "Who will you meet at a swamp that is green and big?",
-            "answer" : "SHREK",
-            "nodes" : "C5, G3"
+            "answer" : "SHREK"
         },
         {
             "point" : "D6",
             "name" : "Jelgava",
             "task" : "Can you find a McDonald's here?",
-            "answer" : "YES, JA, JAA, Y, J",
-            "nodes" : "B8, E7"
+            "answer" : "YES, JA, JAA, Y, J"
         },
         {
             "point" : "F7",
 			"name" : "Dobele",
 			"task" : "What colour traditionally are the flowers that bloom in May and attract hundreds of tourists here every year?",
-			"answer" : "PURPLE, VIOLET, VIOLETS, LILAC, LILLA",
-            "nodes" : "G6, E10"
+			"answer" : "PURPLE, VIOLET, VIOLETS, LILAC, LILLA"
         },
         {
             "point" : "H4",
 			"name" : "Saldus",
 			"task" : "What is a common collocation used with this city's name? Saldus ______ ",
-			"answer" : "SAULE, SUN",
-            "nodes" : "G6, J5"
+			"answer" : "SAULE, SUN"
         },
         {
             "point" : "K6",
 			"name" : "Skrunda",
 			"task" : "What river flows on the border of this Latvian city?",
-			"answer" : "VENTA",
-            "nodes" : "L3, L11"
+			"answer" : "VENTA"
         },
         {
             "point" : "G14",
 			"name" : "Auce",
 			"task" : "Which form of Christianity saw its first church in Latvia in this city?",
-			"answer" : "LUTHERANISM, LUTERANISMS",
-            "nodes" : ""
+			"answer" : "LUTHERANISM, LUTERANISMS"
         },
         {
             "point" : "E11",
 			"name" : "Tervete",
 			"task" : "What is the most popular tourist destination in this city?",
-			"answer" : "THE NATURE PARK, NATURE PARK, PARK, TERVETE NATURE PARK, TERVETES DABAS PARKS, DABAS PARKS, PARKS",
-            "nodes" : "F13, H11"
-        },
+			"answer" : "THE NATURE PARK, NATURE PARK, PARK, TERVETE NATURE PARK, TERVETES DABAS PARKS, DABAS PARKS, PARKS"        },
         {
             "point" : "M12",
 			"name" : "Grobina",
 			"task" : "Which musical duo has written a song about driving through this city?",
-			"answer" : "AARZEMNIEKI, ARZEMNIEKI",
-            "nodes" : ""
+			"answer" : "AARZEMNIEKI, ARZEMNIEKI"
         },
         {
             "point" : "N12",
 			"name" : "Liepaja",
 			"task" : "According to a popular song, who is born in this city?",
-			"answer" : "THE WIND, WIND, VEJS",
-            "nodes" : ""
+			"answer" : "THE WIND, WIND, VEJS"
         }
     ],
     "chargers" : [
         {
             "point" : "F5",
-            "name" : "Statoil",
-            "nodes" : ""
-
+            "name" : "Statoil"
         },
         {
             "point" : "I10",
-            "name" : "Virsi",
-            "nodes" : ""
-
+            "name" : "Virsi"
         },
         {
             "point" : "B9",
-            "name" : "Circle K",
-            "nodes" : ""
-
+            "name" : "Circle K"
         },
         {
             "point" : "M2",
-            "name" : "SuperCharge",
-            "nodes" : ""
-
+            "name" : "SuperCharge"
         }
     ]
 }

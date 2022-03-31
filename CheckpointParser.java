@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,12 +36,14 @@ public class CheckpointParser {
                 for(int j = 0; j < jsonPart.length; j++){
                     String temp = jsonPart[j].substring(1, jsonPart[j].length() - 1);
                     String[] values = temp.split("\":\"");
+            
                     if(values[0].charAt(0) != 'p'){
                         attributes.put(values[0], values[1]);
                     }else{
                         checkpointMap.put(values[1], attributes);
                     }
                 }
+
             }
 
             //READS CHARGING STATIONS
