@@ -97,7 +97,6 @@ public class WorldMap {
                     this.gameMap[x][y] = '@';
                 } else if(ch.chargeStationsInAMap().containsKey(coor)){
                     this.gameMap[x][y] = '$';
-                    System.out.println("Im here");
                  }
             }
         }

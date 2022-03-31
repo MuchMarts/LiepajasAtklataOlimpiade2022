@@ -15,8 +15,6 @@ public class GameLoop {
             
             player.manageLocations();
             player.playerMove();
-            System.out.println("Banana");
-            CLIUtils.wait(1000);
         }
 
         return 1;
