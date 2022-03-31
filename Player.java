@@ -249,11 +249,10 @@ public class Player {
         Scanner sc = new Scanner(System.in);
         String coor = ch.getLetter(lastx) + Integer.toString(lasty + 1);
         boolean answer = false;
+        boolean has = updateAnswered(lastx, lasty);
         while(!answer){
             if(ch.isCheckPoint(coor)){
                 gr.energyBar(this.batteryCharge);
-
-                boolean has = updateAnswered(lastx, lasty);
 
                 if(!has){
                     System.out.println("Location: " + ch.checkpointsInAMap().get(coor).get("name"));
