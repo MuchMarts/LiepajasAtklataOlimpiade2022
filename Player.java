@@ -26,7 +26,7 @@ public class Player {
     public Integer lasty;
 
     public Player(int start_x, int start_y, Graphics gr, WorldMap map, CheckpointParser ch, Leaderboard leaderboard){
-        this.name = "test";//getPlayerName();
+        this.name = getPlayerName();
         this.batteryCharge = 100;
         this.distanceTraveled = 0;
         this.lastx = start_x;
@@ -100,7 +100,7 @@ public class Player {
             CLIUtils.wait(600);
         }
         CLIUtils.wait(2500);
-        
+
         int[] lastLocation = {lasty, lastx};
 
         //HARDCODED TIME CONSTRAINTS
