@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class WorldMap {
     
     //Stores Player location and World map
@@ -11,6 +8,7 @@ public class WorldMap {
     public int width;
     public int height;
     public int[] playerLastCordinates;
+    public int[][] chargePoint;
     CheckpointParser ch;
     Translate translate;
 
@@ -26,6 +24,7 @@ public class WorldMap {
         //checkJson();
         //CLIUtils.wait(CLIUtils.sec(10));
         //genPaths();
+        this.chargePoint = new int[4][2];
         initMap();
 
     }
@@ -156,6 +155,8 @@ private void genPaths(){
                 }
                 }
             }
+        
+        int chargeStationCount = 0;
 
         for(int y = 0; y < this.height; y++){
             for(int x = 0; x < this.width; x++){
@@ -164,6 +165,9 @@ private void genPaths(){
                     this.gameMap[x][y] = '@';
                 } else if(ch.isChargeStation(coor)){
                     this.gameMap[x][y] = '$';
+                    int[] xycords = {y,x};
+                    this.chargePoint[chargeStationCount] = xycords;
+                    chargeStationCount++;
                  }
             }
         }

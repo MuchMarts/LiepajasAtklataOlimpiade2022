@@ -27,7 +27,7 @@ public class Player {
     public Integer lasty;
 
     public Player(int start_x, int start_y, Graphics gr, WorldMap map, CheckpointParser ch, Leaderboard leaderboard){
-        this.name = "test";//getPlayerName();
+        this.name = getPlayerName();
         this.batteryCharge = 100;
         this.distanceTraveled = 0;
         this.lastx = start_x;
@@ -95,7 +95,108 @@ public class Player {
     }
 
     public void callTowTruck(){
-        System.out.println("OH OH BATTERY DEAD\n");
+        System.out.println("Battery died calling Tow Truck!\n");
+        CLIUtils.wait(1000);
+        String[] animation = {
+            "Calling Tow truck",
+            ".",
+            "..",
+            "...",
+            ".",
+            "..",
+            "...",
+            "\"Hey coming to pick you up! We will get you to the closest charge point :)\""
+        };
+        for(String gr : animation){
+            CLIUtils.ClearConsole();
+            System.out.println(gr);
+            CLIUtils.wait(600);
+        }
+        CLIUtils.wait(2500);
+
+        int[] lastLocation = {lasty, lastx};
+
+        //HARDCODED TIME CONSTRAINTS
+
+        int d1 = (shortestPathBetweenPoints.findShortestPath(map.paths, lastLocation , map.chargePoint[0])).length;
+        int d2 = (shortestPathBetweenPoints.findShortestPath(map.paths, lastLocation , map.chargePoint[1])).length;
+        int d3 = (shortestPathBetweenPoints.findShortestPath(map.paths, lastLocation , map.chargePoint[2])).length;
+        int d4 = (shortestPathBetweenPoints.findShortestPath(map.paths, lastLocation , map.chargePoint[3])).length;    
+        
+        int[] lastCords = new int[2];
+
+        if(d1 < d2 && d1 < d3 && d1 < d4){
+            for(int[] cor : shortestPathBetweenPoints.findShortestPath(map.paths, lastLocation , map.chargePoint[0])){
+            lastCords[0] = this.lastx;
+            lastCords[1] = this.lasty;
+
+            if(cor[0] == this.lastx && cor[1] == this.lasty){
+                this.lastx = cor[0];
+                this.lasty = cor[1];
+            } else {
+                map.movePlayer(cor, lastCords);
+                //useBattery(GameSettings.stepSize, this.rain);
+                updateDistanceTraveled(GameSettings.stepSize);
+                Render.drawTowTruck(map, gr, this.batteryCharge);
+                this.lastx = cor[0];
+                this.lasty = cor[1];
+            }
+            }
+        } else if(d2 < d1 && d2 < d3 &&d2 < d4){
+            for(int[] cor : shortestPathBetweenPoints.findShortestPath(map.paths, lastLocation , map.chargePoint[1])){
+                lastCords[0] = this.lastx;
+                lastCords[1] = this.lasty;
+    
+                if(cor[0] == this.lastx && cor[1] == this.lasty){
+                    this.lastx = cor[0];
+                    this.lasty = cor[1];
+                } else {
+                    map.movePlayer(cor, lastCords);
+                    //useBattery(GameSettings.stepSize, this.rain);
+                    updateDistanceTraveled(GameSettings.stepSize);
+                    Render.drawTowTruck(map, gr, this.batteryCharge);
+                    this.lastx = cor[0];
+                    this.lasty = cor[1];
+                }
+                }
+        } else if(d3 < d1 && d3 < d2 &&d3 < d4){
+            for(int[] cor : shortestPathBetweenPoints.findShortestPath(map.paths, lastLocation , map.chargePoint[2])){
+                lastCords[0] = this.lastx;
+                lastCords[1] = this.lasty;
+    
+                if(cor[0] == this.lastx && cor[1] == this.lasty){
+                    this.lastx = cor[0];
+                    this.lasty = cor[1];
+                } else {
+                    map.movePlayer(cor, lastCords);
+                    //useBattery(GameSettings.stepSize, this.rain);
+                    updateDistanceTraveled(GameSettings.stepSize);
+                    Render.drawTowTruck(map, gr, this.batteryCharge);
+                    this.lastx = cor[0];
+                    this.lasty = cor[1];
+                }
+                }
+        } else if(d4 < d2 && d4 < d3 &&d4 < d1){
+            for(int[] cor : shortestPathBetweenPoints.findShortestPath(map.paths, lastLocation , map.chargePoint[3])){
+                lastCords[0] = this.lastx;
+                lastCords[1] = this.lasty;
+    
+                if(cor[0] == this.lastx && cor[1] == this.lasty){
+                    this.lastx = cor[0];
+                    this.lasty = cor[1];
+                } else {
+                    map.movePlayer(cor, lastCords);
+                    //useBattery(GameSettings.stepSize, this.rain);
+                    updateDistanceTraveled(GameSettings.stepSize);
+                    Render.drawTowTruck(map, gr, this.batteryCharge);
+                    this.lastx = cor[0];
+                    this.lasty = cor[1];
+                }
+                }
+        } else {
+            System.out.println("TowTruck Broke");
+        } 
+    chargeBattery(false);
     }
 
     public Integer getDistanceTraveled(){
@@ -139,7 +240,6 @@ public class Player {
         }
         
         if(batteryCharge <= 0){
-            System.out.println("Im here");
             callTowTruck();
         }
         //manageLocations();
