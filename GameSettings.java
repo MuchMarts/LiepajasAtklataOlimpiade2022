@@ -5,6 +5,7 @@ public class GameSettings {
     public static int pxy = 2 * visionRad + 1;
     //To move 1 tile costs stepSize * distanceCost
     public static double distanceCost = 1; // % of battery used to move 1 km
+    public static double distanceCostRain = 1.5; // % of battery used to move 1 km in rain
     public static int stepSize = 5; // size of one tile km
 
     public static int start_x = 0;

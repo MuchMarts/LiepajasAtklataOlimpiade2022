@@ -9,10 +9,13 @@ public class Graphics {
     
     String[] Banner;
     String[] GameCreators;
+    String[] rain;
+    String[] sun;
 
     public Graphics(){
         
         JSONParser jsonParser = new JSONParser();
+        //this could have been a loop but i cant bother
         try {
             FileReader reader = new FileReader("Graphics.json");
             //Read JSON file
@@ -34,6 +37,22 @@ public class Graphics {
                 creators_str[i] = creators_arr[i].toString();
             }
             this.GameCreators = creators_str;
+
+            JSONArray rain_cloud = (JSONArray) jsonObject.get("rain");
+            Object[] rain_arr = rain_cloud.toArray();
+            String[] rain_str = new String[rain_arr.length];
+            for(int i = 0; i < rain_arr.length; i++){
+                rain_str[i] = rain_arr[i].toString();
+            }
+            this.rain = rain_str;
+
+            JSONArray sunny = (JSONArray) jsonObject.get("sun");
+            Object[] sun_arr = sunny.toArray();
+            String[] sun_str = new String[sun_arr.length];
+            for(int i = 0; i < sun_arr.length; i++){
+                sun_str[i] = sun_arr[i].toString();
+            }
+            this.sun = sun_str;
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("something went poopy");
@@ -94,6 +113,14 @@ public class Graphics {
     public void gameCreators(){
         //renderGraphics(setGameCreators());
         renderGraphics(this.GameCreators);
+    }
+
+    public void rainAnimation(){
+        renderGraphics(this.rain);
+    }
+
+    public void sunAnimation(){
+        renderGraphics(this.sun);
     }
 
     public void energyBar(int x){

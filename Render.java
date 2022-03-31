@@ -1,9 +1,19 @@
 public class Render {
 
-    public static void drawMap(WorldMap map, Graphics gr, int battery){
+    public static void drawMap(WorldMap map, Graphics gr, int battery, boolean rain){
         CLIUtils.ClearConsole();
 
         gr.banner();
+
+        if(rain){
+            System.out.println();
+            gr.rainAnimation(); 
+            System.out.println();  
+        }else{
+            System.out.println();
+            gr.sunAnimation();
+            System.out.println();       
+        }
 
         char[][] currMap = getCurrMapState(map);
 
