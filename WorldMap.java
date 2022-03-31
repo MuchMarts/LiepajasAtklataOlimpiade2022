@@ -53,7 +53,10 @@ public class WorldMap {
                     ArrayList<String> allNodes = new ArrayList<>(Arrays.asList(ch.checkpointsInAMap().get(roadcoor).get("nodes").split(", ")));
                     
                     for(String end : allNodes){
-                        if(end == ""){break;}
+                        if(end == ""){
+                            this.paths[point[1]][point[0]] = 1;
+                            break
+                            ;}
 
                         int xCor = Integer.parseInt(end.substring(1));
                         int yCor = translate.getInteger(end.substring(0,1).toUpperCase());
@@ -75,6 +78,7 @@ public class WorldMap {
     }
 
     private void initMap(){
+
         this.gameMap = new char[this.width][this.height];
         //TODO: Read map info from somewhere
         //Intializes map data (RN TEMP FILLED WITH -)
@@ -93,9 +97,9 @@ public class WorldMap {
         for(int y = 0; y < this.height; y++){
             for(int x = 0; x < this.width; x++){
                 String coor = ch.getLetter(x) + Integer.toString(y + 1);
-                if(ch.checkpointsInAMap().containsKey(coor)){
+                if(ch.isCheckPoint(coor)){
                     this.gameMap[x][y] = '@';
-                } else if(ch.chargeStationsInAMap().containsKey(coor)){
+                } else if(ch.isChargeStation(coor)){
                     this.gameMap[x][y] = '$';
                     System.out.println("Im here");
                  }
