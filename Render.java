@@ -89,4 +89,10 @@ public class Render {
         
         return currentMapState;
     }
+
+    public static void gameWin(Player player){
+        CLIUtils.ClearConsole();
+        System.out.println( "Congrats " + player.name + " you beat the game!");
+        System.out.println("Your time played: ");
+    }
 }

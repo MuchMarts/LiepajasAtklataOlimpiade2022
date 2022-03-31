@@ -7,6 +7,7 @@ public class Player {
     public Integer batteryCharge;
     private Integer distanceTraveled;
     private boolean rain;
+    public int answeredQuestions;
     
     private WorldMap map;
     private Graphics gr;
@@ -26,10 +27,15 @@ public class Player {
         this.gr = gr;
         this.ch = ch;
         this.movement = new PlayerMovement(gr, map);
+        this.answeredQuestions = 0;
     }
 
     public void setRain(boolean rain){
         this.rain = rain;
+    }
+
+    private void updateAnswered(){
+        this.answeredQuestions++;
     }
 
     public void chargeBattery(boolean isSuper){
@@ -104,6 +110,7 @@ public class Player {
                     answer = false;
                 }else{
                     System.out.println("\nCorrect! Good job!\n");
+                    updateAnswered();
                     answer = true; break;
                 }
             }else if(ch.isChargeStation(coor)){
