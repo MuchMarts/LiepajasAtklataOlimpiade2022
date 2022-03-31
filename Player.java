@@ -10,7 +10,6 @@ public class Player {
     private boolean rain;
     public int answeredQuestions;
     public String playedTimeString;
-    public ArrayList<String> oldCoordinates;
     
     private long startTime;
     private long endTime;
@@ -38,7 +37,6 @@ public class Player {
         this.movement = new PlayerMovement(gr, map);
         this.answeredQuestions = 0;
         this.lead = leaderboard;
-        this.oldCoordinates = new ArrayList<>();
     }
 
     public void startTime(){
@@ -63,19 +61,8 @@ public class Player {
         this.rain = rain;
     }
 
-    private boolean updateAnswered(int x, int y){
-        boolean has = false;
-        
-        if(oldCoordinates.contains(Integer.toString(x) + Integer.toString(y))){
-            System.out.println("Hmmm... looks like you've been here already...");
-            has = true;
-        }
-        else{
-            this.answeredQuestions++;
-            oldCoordinates.add(Integer.toString(x) + Integer.toString(y));
-            has = false;
-        }
-        return has;
+    private void updateAnswered(){
+        this.answeredQuestions++;
     }
 
     public void chargeBattery(boolean isSuper){
@@ -253,35 +240,31 @@ public class Player {
             if(ch.isCheckPoint(coor)){
                 gr.energyBar(this.batteryCharge);
 
-                boolean has = updateAnswered(lastx, lasty);
+                System.out.println("Location: " + ch.checkpointsInAMap().get(coor).get("name"));
+                System.out.println(ch.checkpointsInAMap().get(coor).get("task"));
+                String user_answer = sc.nextLine();
+                ArrayList<String> arr = new ArrayList<>(Arrays.asList(ch.checkpointsInAMap().get(coor).get("answer").split(", ")));
+                if(!arr.contains(user_answer.toUpperCase())){
+                    System.out.println("Wrong answer... Try again!");
+                    answer = false;
+                }else{
+                    System.out.println("\nCorrect! Good job!\n");
+                    updateAnswered();
+                    answer = true; break;
+                }
+            }else if(ch.isChargeStation(coor)){
 
-                if(!has){
-                    System.out.println("Location: " + ch.checkpointsInAMap().get(coor).get("name"));
-                    System.out.println(ch.checkpointsInAMap().get(coor).get("task"));
-                    String user_answer = sc.nextLine();
-                    ArrayList<String> arr = new ArrayList<>(Arrays.asList(ch.checkpointsInAMap().get(coor).get("answer").split(", ")));
-                    if(!arr.contains(user_answer.toUpperCase())){
-                        System.out.println("Wrong answer... Try again!");
-                        answer = false;
-                    }else{
-                        System.out.println("\nCorrect! Good job!\n");
-                        //updateAnswered(lastx, lasty);
-                        answer = true; break;
-                    }
-                }else if(ch.isChargeStation(coor)){
-
-                    System.out.println("Location: " + ch.chargeStationsInAMap().get(coor).get("name"));
-                    if(ch.chargeStationsInAMap().get(coor).get("name") == "SuperCharge"){
-                        chargeBattery(true);
-                        gr.energyBar(this.batteryCharge);
-                        answer = true; break;
-                    }else{
-                        chargeBattery(false);
-                        gr.energyBar(this.batteryCharge);
-                        answer = true; break;
-                    }
-                }if(has){break;}
-            }    
+                System.out.println("Location: " + ch.chargeStationsInAMap().get(coor).get("name"));
+                if(ch.chargeStationsInAMap().get(coor).get("name") == "SuperCharge"){
+                    chargeBattery(true);
+                    gr.energyBar(this.batteryCharge);
+                    answer = true; break;
+                }else{
+                    chargeBattery(false);
+                    gr.energyBar(this.batteryCharge);
+                    answer = true; break;
+                }
+            }
         }            
     }
 

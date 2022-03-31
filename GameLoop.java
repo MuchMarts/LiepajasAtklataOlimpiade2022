@@ -24,6 +24,9 @@ public class GameLoop {
             
             player.manageLocations();
             
+            if(player.batteryCharge == 0){
+                player.callTowTruck();
+            }
             player.playerMove();
         }
 
