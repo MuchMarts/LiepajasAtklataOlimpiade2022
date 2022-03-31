@@ -249,6 +249,20 @@ public class Player {
         Scanner sc = new Scanner(System.in);
         String coor = ch.getLetter(lastx) + Integer.toString(lasty + 1);
         boolean answer = false;
+        if(ch.isChargeStation(coor)){
+            answer = true;
+            System.out.println("Location: " + ch.chargeStationsInAMap().get(coor).get("name"));
+            if(ch.chargeStationsInAMap().get(coor).get("name") == "SuperCharge"){
+                chargeBattery(true);
+                gr.energyBar(this.batteryCharge);
+                //answer = true; 
+            }else{
+                chargeBattery(false);
+                gr.energyBar(this.batteryCharge);
+                //answer = true; 
+            }
+        }
+        
         boolean has = updateAnswered(lastx, lasty);
         while(!answer){
             if(ch.isCheckPoint(coor)){
@@ -267,19 +281,10 @@ public class Player {
                         //updateAnswered(lastx, lasty);
                         answer = true; break;
                     }
-                }else if(ch.isChargeStation(coor)){
-
-                    System.out.println("Location: " + ch.chargeStationsInAMap().get(coor).get("name"));
-                    if(ch.chargeStationsInAMap().get(coor).get("name") == "SuperCharge"){
-                        chargeBattery(true);
-                        gr.energyBar(this.batteryCharge);
-                        answer = true; break;
-                    }else{
-                        chargeBattery(false);
-                        gr.energyBar(this.batteryCharge);
-                        answer = true; break;
-                    }
                 }if(has){break;}
+            }else{
+                gr.energyBar(this.batteryCharge);
+                answer = true; break;
             }    
         }            
     }
