@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class GameLoop {
 
     public int startGame(Graphics graphics, CheckpointParser ch){
@@ -10,8 +12,12 @@ public class GameLoop {
         WorldMap gameMap = new WorldMap(GameSettings.w, GameSettings.h, ch);
         Player player = new Player(start_x, start_y, gr, gameMap, ch);
 
+        Random rd = new Random();
+        boolean rain = rd.nextBoolean();
+        player.setRain(rain);
+
         while(player.batteryCharge > 0){
-            Render.drawMap(gameMap, gr, player.batteryCharge);
+            Render.drawMap(gameMap, gr, player.batteryCharge, rain);
             
             player.manageLocations();
             player.playerMove();

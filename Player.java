@@ -6,6 +6,7 @@ public class Player {
     public String name;
     public Integer batteryCharge;
     private Integer distanceTraveled;
+    private boolean rain;
     
     private WorldMap map;
     private Graphics gr;
@@ -27,12 +28,20 @@ public class Player {
         this.movement = new PlayerMovement(gr, map);
     }
 
+    public void setRain(boolean rain){
+        this.rain = rain;
+    }
+
     public void chargeBattery(){
         this.batteryCharge = 100;
     }
 
-    private void useBattery(int distance){
-        this.batteryCharge = (int) (this.batteryCharge - distance * GameSettings.distanceCost);
+    private void useBattery(int distance, boolean rain){
+        if(!rain){
+            this.batteryCharge = (int) (this.batteryCharge - distance * GameSettings.distanceCost);
+        }else{
+            this.batteryCharge = (int) (this.batteryCharge - distance * GameSettings.distanceCostRain);
+        }
     }
 
     public Integer getDistanceTraveled(){
@@ -64,7 +73,7 @@ public class Player {
                 this.lasty = playerPos[1];
             } else {
                 map.movePlayer(playerPos, lastCords);
-                useBattery(GameSettings.stepSize);
+                useBattery(GameSettings.stepSize, this.rain);
                 updateDistanceTraveled(GameSettings.stepSize);
                 Render.drawMapAnim(this.map, this.gr, this.batteryCharge);
                 this.lastx = playerPos[0];
