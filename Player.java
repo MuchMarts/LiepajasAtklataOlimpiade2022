@@ -101,6 +101,7 @@ public class Player {
                     System.out.println("Wrong answer... Try again!");
                     answer = false;
                 }else{
+                    System.out.println("\nCorrect! Good job!\n");
                     answer = true; break;
                 }
             }else if(ch.isChargeStation(coor)){
