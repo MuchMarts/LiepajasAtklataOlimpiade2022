@@ -63,7 +63,7 @@ public class Graphics {
     
     private String resolveInt(int x){
         String line = "000";
-        if(x == 100){
+        if(x > 99 && x < 999){
             line = String.valueOf(x);
         } else if ( x < 100 && x >= 10){
             line = "0" + String.valueOf(x);

@@ -27,8 +27,12 @@ public class Player {
         this.movement = new PlayerMovement(gr, map);
     }
 
-    public void chargeBattery(){
-        this.batteryCharge = 100;
+    public void chargeBattery(boolean isSuper){
+        if(isSuper){
+            this.batteryCharge = 150;
+        } else {
+            this.batteryCharge = 100;
+        }    
     }
 
     private void useBattery(int distance){
@@ -91,12 +95,13 @@ public class Player {
                     answer = true; break;
                 }
             }else if(ch.isChargeStation(coor)){
+
                 System.out.println("Location: " + ch.chargeStationsInAMap().get(coor).get("name"));
                 if(ch.chargeStationsInAMap().get(coor).get("name") == "SuperCharge"){
-                    this.batteryCharge = 150;
+                    chargeBattery(true);
                     answer = true; break;
                 }else{
-                    chargeBattery();
+                    chargeBattery(false);
                     answer = true; break;
                 }
             }
