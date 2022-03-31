@@ -54,6 +54,10 @@ public class Player {
         }
     }
 
+    public void callTowTruck(){
+        System.out.println("OH OH BATTERY DEAD\n");
+    }
+
     public Integer getDistanceTraveled(){
         return distanceTraveled;
     }
@@ -74,21 +78,26 @@ public class Player {
 
         int[] lastCords = new int[2];
 
-        for(int[] playerPos : path){
-            lastCords[0] = this.lastx;
-            lastCords[1] = this.lasty;
+        while(batteryCharge != 0){
+            for(int[] playerPos : path){
+                lastCords[0] = this.lastx;
+                lastCords[1] = this.lasty;
 
-            if(playerPos[0] == this.lastx && playerPos[1] == this.lasty){
-                this.lastx = playerPos[0];
-                this.lasty = playerPos[1];
-            } else {
-                map.movePlayer(playerPos, lastCords);
-                useBattery(GameSettings.stepSize, this.rain);
-                updateDistanceTraveled(GameSettings.stepSize);
-                Render.drawMapAnim(this.map, this.gr, this.batteryCharge);
-                this.lastx = playerPos[0];
-                this.lasty = playerPos[1];
+                if(playerPos[0] == this.lastx && playerPos[1] == this.lasty){
+                    this.lastx = playerPos[0];
+                    this.lasty = playerPos[1];
+                } else {
+                    map.movePlayer(playerPos, lastCords);
+                    useBattery(GameSettings.stepSize, this.rain);
+                    updateDistanceTraveled(GameSettings.stepSize);
+                    Render.drawMapAnim(this.map, this.gr, this.batteryCharge);
+                    this.lastx = playerPos[0];
+                    this.lasty = playerPos[1];
+                }
             }
+        }
+        if(batteryCharge <= 0){
+            callTowTruck();
         }
         //manageLocations();
     }

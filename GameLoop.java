@@ -16,14 +16,17 @@ public class GameLoop {
         boolean rain = rd.nextBoolean();
         player.setRain(rain);
 
-        while(player.answeredQuestions < 10){
+        while(player.answeredQuestions < 2){
             Render.drawMap(gameMap, gr, player.batteryCharge, rain);
             
             player.manageLocations();
-            player.playerMove();
             
+            if(player.batteryCharge == 0){
+                player.callTowTruck();
+            }
+            player.playerMove();
         }
-
+        
         Render.gameWin(player);
 
         return 1;

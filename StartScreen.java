@@ -35,9 +35,7 @@ public class StartScreen {
 
         System.out.println("[1] Start game");
         System.out.println("[2] Leaderboard");
-        System.out.println("[3] Task editor");
-        System.out.println("[4] Map editor");
-        System.out.println("[5] Exit");      
+        System.out.println("[3] Exit");      
 
         System.out.println("\nChoose an option: ");
         
