@@ -93,6 +93,8 @@ public class Player {
         boolean answer = false;
         while(!answer){
             if(ch.isCheckPoint(coor)){
+                gr.energyBar(this.batteryCharge);
+
                 System.out.println("Location: " + ch.checkpointsInAMap().get(coor).get("name"));
                 System.out.println(ch.checkpointsInAMap().get(coor).get("task"));
                 String user_answer = sc.nextLine();
@@ -109,9 +111,11 @@ public class Player {
                 System.out.println("Location: " + ch.chargeStationsInAMap().get(coor).get("name"));
                 if(ch.chargeStationsInAMap().get(coor).get("name") == "SuperCharge"){
                     chargeBattery(true);
+                    gr.energyBar(this.batteryCharge);
                     answer = true; break;
                 }else{
                     chargeBattery(false);
+                    gr.energyBar(this.batteryCharge);
                     answer = true; break;
                 }
             }

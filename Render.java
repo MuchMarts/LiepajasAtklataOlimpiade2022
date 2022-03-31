@@ -40,7 +40,7 @@ public class Render {
             System.out.println();
         }
         
-        gr.energyBar(battery);
+        //gr.energyBar(battery);
     }
 
     public static void drawMapAnim(WorldMap map, Graphics gr, int battery){
