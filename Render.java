@@ -76,42 +76,6 @@ public class Render {
 
         gr.energyBar(battery);
 
-        CLIUtils.wait(500);
-    }
-
-    public static void drawTowTruck(WorldMap map, Graphics gr, int battery){
-        
-        char[][] currMap = getCurrMapState(map);
-
-        CLIUtils.ClearConsole();
-
-        gr.banner();
-
-        System.out.print("   ");
-        for(int i = 0; i < GameSettings.w; i++){
-            System.out.print((char)(i + 17 + '0') + " ");
-        }
-        System.out.println();
-        for(int y = 0; y < GameSettings.h; y++){
-            if(y < 9){
-                System.out.print(" " + (y + 1) + " ");
-            }else{
-                System.out.print((y + 1) + " ");
-            }
-            for(int x = 0; x < GameSettings.w; x++){
-                switch(currMap[x][y]){
-                    case '=' : gr.colourRoad(); break;
-                    case '@' : gr.colourCheckPoint(); break;
-                    case '$' : gr.colourChargePoint(); break;
-                    case '-' : gr.colourEmpty(); break;
-                    case 'X' : gr.colourPlayerTowTruck();break;
-                }
-            }
-            System.out.println();
-        }
-
-        gr.energyBar(battery);
-
         CLIUtils.wait(1000);
     }
 

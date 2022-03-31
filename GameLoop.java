@@ -17,9 +17,9 @@ public class GameLoop {
         Random rd = new Random();
         boolean rain = rd.nextBoolean();
         player.setRain(rain);
-        player.startTime();
 
         while(player.answeredQuestions < 10){
+            player.startTime();
             Render.drawMap(gameMap, gr, player.batteryCharge, rain);
             
             player.manageLocations();

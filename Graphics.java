@@ -151,10 +151,4 @@ public class Graphics {
             ConsoleColour.BLACK + GameSettings.empty + " " + ConsoleColour.RESET
         );
     }
-
-    public void colourPlayerTowTruck(){
-        System.out.print(
-            ConsoleColour.RED_BACKGROUND_BRIGHT + GameSettings.player + " " + ConsoleColour.RESET
-        );
-    }
 }
